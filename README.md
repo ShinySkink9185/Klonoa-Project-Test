@@ -12,38 +12,117 @@ Ripped by Frario
 
 SPECIAL THANKS (in alphabetical order):
 1337b2
+A'Dilla
+AaRon The Human
+Adude
 Aimeers
+Annikku
 AStrangerInTheObjectCommunity
 Bandai Namco
+Becky
+bitten2up
+Blazy Monodia
 Bluelight
 BluJayCherry
+Волфганг
+Boomer
+Bugs
 Cable
-Darko
+CallieMacN
+Cassedila
+Chuckles_troll
+Chungus Bungus
+Cobaltn't
+CosmicBrie
+Curedleaves
+Dakkī the RoBo
+Darko/Mlgjohn
 Dark the Hedgehog
+DaStupidSonic
+Diligentchi
 ElectricWaveX
 Evil Dark the Hedgehog
-Fleet
+Flame the Synth-Landit
+FleetLovesPizza
+FlitVerbal
+FlowerGirl
+Future Smiles
+Gabri.lua
 GalaxyTrail
+Giberish4
+Goro
+Greennick78sh
+Gumpy63
 HCBR
+Hezi
+HyperPotato
 Hydro
 Isabelle
+Limo
+Jaden
+JackieJelly
+Jisk
+Joten/Idot
+Justkenji1
 KaiyoLazr
 Kart Krew Dev
-Kori (TODO: Figure out this guy's username)
-Marie/Kriby
+Katzy.mdg
+Kori
+Kilo
+KixxReborn
+KiyanTheBluePenguin
+Marie-tsuru/Kriby
+Marilyn
+MarleDrawsStuff
+MasochMoon
+MisterDJ
+MrPastin
+Mr. Space
+M.T.O.V
+Mute
+Nessie
+OGAmyDroid
+OhThatGuy64
 OVA Pico
+OVATails
 Past Warrior
+Peppermint
+Pikzelow
+Potts
+Princess-Yahaira
+ProjectSNT
+Rakcid
 Rascally Rosy
+RedHotSonic
+Roc
 Rosie Kitsune
+RubyTheMii
+SandwichCinema
+SaturnDreemurr32X
 SEGA
 SeventhSentinel
+Skoopy
+Sling1991
+Slunky
 Snoccy
 Sonic Team
 Sonic Team Jr.
+Sonicspeed148
 Spectra
+SplitsTheOne
+Spoonise
+Starlyn
+StarManiaKG
+SteveMonke
 Steven
+SuperKeanu
+Survival46
+SweetCoffy
+Tech
 The SRB2 Community
 Troplucky
+Virmonth
 Weegs
-(TODO: More names!)
+TheWhatParting
+Yume
 And plenty more...
