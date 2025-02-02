@@ -8,7 +8,7 @@ ShinySkink9185 (made the game)
 
 ASSETS TAKEN FROM:
 Klonoa: Empire of Dreams (GBA)
-Ripped by Frario
+Ripped by Frario, AzRaezel/Dan
 
 SPECIAL THANKS (in alphabetical order):
 1337b2
