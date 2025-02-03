@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://c402ylf00mpqb"]
+
+[ext_resource type="Texture2D" uid="uid://8uhlqneajqnr" path="res://Assets/Images/Klonoa/Klonoa.png" id="1_xwdok"]
+
+[sub_resource type="Animation" id="Animation_sefyh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pmlye"]
+resource_name = "Stand"
+length = 1.33334
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0y7f"]
+_data = {
+"RESET": SubResource("Animation_sefyh"),
+"Stand": SubResource("Animation_pmlye")
+}
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xwdok")
+hframes = 9
+vframes = 17
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_t0y7f")
+}
+autoplay = "Stand"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

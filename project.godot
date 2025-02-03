@@ -11,7 +11,15 @@ config_version=5
 [application]
 
 config/name="Klonoa Project Test"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+
+[display]
+
+window/size/viewport_width=384
+window/size/viewport_height=216
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 

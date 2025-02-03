@@ -1,26 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqiu53wkqillk"]
+[gd_scene load_steps=2 format=3 uid="uid://cqiu53wkqillk"]
 
-[ext_resource type="Texture2D" uid="uid://6418u48y774y" path="res://Assets/Images/Klonoa/KlonoaSheet1.png" id="1_t74jd"]
-
-[sub_resource type="Animation" id="Animation_pmlye"]
-resource_name = "Stand"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0y7f"]
-_data = {
-"Stand": SubResource("Animation_pmlye")
-}
+[ext_resource type="PackedScene" uid="uid://c402ylf00mpqb" path="res://Scripts/player.tscn" id="1_14sqi"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("1_14sqi")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("1_t74jd")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_t0y7f")
-}
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
