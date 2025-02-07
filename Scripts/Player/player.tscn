@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c402ylf00mpqb"]
+[gd_scene load_steps=7 format=3 uid="uid://c402ylf00mpqb"]
 
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_4u45w"]
 [ext_resource type="Texture2D" uid="uid://8uhlqneajqnr" path="res://Assets/Images/Klonoa/Klonoa.png" id="1_xwdok"]
 
 [sub_resource type="Animation" id="Animation_sefyh"]
@@ -41,9 +42,13 @@ _data = {
 "Stand": SubResource("Animation_pmlye")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t60np"]
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4u45w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
 texture = ExtResource("1_xwdok")
 hframes = 9
 vframes = 17
@@ -55,4 +60,6 @@ libraries = {
 }
 autoplay = "Stand"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_t60np")
