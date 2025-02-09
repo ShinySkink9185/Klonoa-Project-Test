@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bumnkpdho6a6e"
-path="res://.godot/imported/s1sms_ghz1.png-c49e5be700012e625ba3a41799eeab52.ctex"
+uid="uid://bf0k86p2lbp5c"
+path="res://.godot/imported/s1gg_ghz1.png-b86b2412ece4c4e0e1840b996a97dc1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Tilesets/Green Hill Zone Act 1 (Sonic 1 SMS)/s1sms_ghz1.png"
-dest_files=["res://.godot/imported/s1sms_ghz1.png-c49e5be700012e625ba3a41799eeab52.ctex"]
+source_file="res://Assets/Images/Tilesets/Green Hill Zone Act 1 (Sonic 1 GG)/s1gg_ghz1.png"
+dest_files=["res://.godot/imported/s1gg_ghz1.png-b86b2412ece4c4e0e1840b996a97dc1c.ctex"]
 
 [params]
 
