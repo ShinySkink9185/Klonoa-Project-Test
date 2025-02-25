@@ -394,7 +394,6 @@ position = Vector2(166, -54)
 
 [node name="Player" parent="." instance=ExtResource("1_14sqi")]
 position = Vector2(168, -21)
-floor_stop_on_slope = false
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -8)
