@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqiu53wkqillk"]
 
-[ext_resource type="Script" path="res://game_manager.gd" id="1_elfa7"]
+[ext_resource type="Script" uid="uid://laife3rgm2ek" path="res://game_manager.gd" id="1_elfa7"]
 [ext_resource type="PackedScene" uid="uid://clpwmdf88vw2u" path="res://Scenes/Levels/Green Hill Zone 1 GG/green_hill_zone_1_gg.tscn" id="1_q1oev"]
 
 [node name="Game" type="Node2D"]

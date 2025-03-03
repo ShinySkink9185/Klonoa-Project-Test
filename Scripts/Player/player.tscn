@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c402ylf00mpqb"]
 
-[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_4u45w"]
+[ext_resource type="Script" uid="uid://bpkscdyn8c4dx" path="res://Scripts/Player/player.gd" id="1_4u45w"]
 [ext_resource type="Texture2D" uid="uid://8uhlqneajqnr" path="res://Assets/Images/Klonoa/Klonoa.png" id="1_xwdok"]
 
 [sub_resource type="Animation" id="Animation_q2nwk"]
@@ -239,24 +239,24 @@ step = 0.0166667
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0y7f"]
 _data = {
-"Fall": SubResource("Animation_q2nwk"),
-"Fire": SubResource("Animation_7f10n"),
-"Float": SubResource("Animation_v1xy0"),
-"Jump": SubResource("Animation_lc1j3"),
-"Land": SubResource("Animation_6k02p"),
-"RESET": SubResource("Animation_sefyh"),
-"Stand": SubResource("Animation_pmlye"),
-"Stand (Back)": SubResource("Animation_ymltu"),
-"Stand (Front)": SubResource("Animation_r4nux"),
-"Stand (Grab)": SubResource("Animation_dus4b"),
-"Wait 1": SubResource("Animation_rm2sq"),
-"Wait 2": SubResource("Animation_v8783"),
-"Wait 3": SubResource("Animation_a3bkf"),
-"Wait 4": SubResource("Animation_nmb86"),
-"Walk": SubResource("Animation_0vh46"),
-"Walk (Back)": SubResource("Animation_y2m7m"),
-"Walk (Front)": SubResource("Animation_sgcvn"),
-"Walk (Grab)": SubResource("Animation_dwebq")
+&"Fall": SubResource("Animation_q2nwk"),
+&"Fire": SubResource("Animation_7f10n"),
+&"Float": SubResource("Animation_v1xy0"),
+&"Jump": SubResource("Animation_lc1j3"),
+&"Land": SubResource("Animation_6k02p"),
+&"RESET": SubResource("Animation_sefyh"),
+&"Stand": SubResource("Animation_pmlye"),
+&"Stand (Back)": SubResource("Animation_ymltu"),
+&"Stand (Front)": SubResource("Animation_r4nux"),
+&"Stand (Grab)": SubResource("Animation_dus4b"),
+&"Wait 1": SubResource("Animation_rm2sq"),
+&"Wait 2": SubResource("Animation_v8783"),
+&"Wait 3": SubResource("Animation_a3bkf"),
+&"Wait 4": SubResource("Animation_nmb86"),
+&"Walk": SubResource("Animation_0vh46"),
+&"Walk (Back)": SubResource("Animation_y2m7m"),
+&"Walk (Front)": SubResource("Animation_sgcvn"),
+&"Walk (Grab)": SubResource("Animation_dwebq")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t60np"]
@@ -273,7 +273,7 @@ vframes = 21
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_t0y7f")
+&"": SubResource("AnimationLibrary_t0y7f")
 }
 autoplay = "Stand"
 

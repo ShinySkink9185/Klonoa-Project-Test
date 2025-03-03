@@ -1,4 +1,5 @@
 extends Area2D
+class_name DreamStone
 
 var stage_manager = load("res://Scripts/Stage Manager/stage_manager.gd")
 

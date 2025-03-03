@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 
 const SPEED = 90.000
@@ -27,7 +28,7 @@ func _physics_process(delta):
 		hasFloated = true
 		floating = true
 	
-	if floating == true and Input.is_action_pressed("jump") and floatingTimer < 1.133:
+	if floating == true and Input.is_action_pressed("jump") and floatingTimer < 1.133 and not is_on_floor():
 		if floatingTimer < 0.3:
 			floatingTimer += delta
 			velocity.y = FLOAT_VELOCITY
