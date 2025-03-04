@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://clpwmdf88vw2u"]
+[gd_scene load_steps=13 format=4 uid="uid://clpwmdf88vw2u"]
 
 [ext_resource type="PackedScene" uid="uid://d1m5gqetklr6g" path="res://Scenes/Levels/Green Hill Zone 1 GG/Special Tiles/yellow_flower.tscn" id="1_ajmm4"]
 [ext_resource type="Texture2D" uid="uid://bf0k86p2lbp5c" path="res://Assets/Images/Tilesets/Green Hill Zone Act 1 (Sonic 1 GG)/s1gg_ghz1.png" id="1_k7ris"]
@@ -398,6 +398,9 @@ scenes/1/scene = ExtResource("2_f7fqh")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetScenesCollectionSource_pyevs")
 
+[sub_resource type="TileSet" id="TileSet_0r7rp"]
+tile_size = Vector2i(8, 8)
+
 [node name="Green Hill Zone 1 GG" type="Node2D"]
 position = Vector2(16, 21)
 
@@ -418,6 +421,10 @@ position = Vector2(168, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -8)
+
+[node name="HUDTileMap" type="TileMapLayer" parent="Player/Camera2D"]
+position = Vector2(-168, 8)
+tile_set = SubResource("TileSet_0r7rp")
 
 [connection signal="body_entered" from="GeneralTileMap/Dream Stone" to="GeneralTileMap/Dream Stone" method="_on_body_entered"]
 [connection signal="body_entered" from="GeneralTileMap/@Area2D@22832" to="GeneralTileMap/@Area2D@22832" method="_on_body_entered"]
