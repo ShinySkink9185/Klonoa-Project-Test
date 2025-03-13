@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7rec25qeua64"]
+
+[ext_resource type="Texture2D" uid="uid://cvlahy80gbgr7" path="res://Assets/Images/HUD/HUD.png" id="1_33i1w"]
+[ext_resource type="PackedScene" uid="uid://j3iqe7mt0lar" path="res://Scenes/HUD/heart.tscn" id="2_5aai8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a56j6"]
+atlas = ExtResource("1_33i1w")
+region = Rect2(0, 32, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33i1w"]
+atlas = ExtResource("1_33i1w")
+region = Rect2(0, 0, 160, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aai8"]
+atlas = ExtResource("1_33i1w")
+region = Rect2(8, 32, 40, 16)
+
+[node name="HUD" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="BarMiddle" type="TextureRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_a56j6")
+
+[node name="BarBeginning" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 160.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_33i1w")
+expand_mode = 1
+
+[node name="BarEnd" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_5aai8")
+
+[node name="Heart" parent="." instance=ExtResource("2_5aai8")]
+position = Vector2(16, 208)
+
+[node name="Heart2" parent="." instance=ExtResource("2_5aai8")]
+position = Vector2(32, 208)
+hudHealthID = 1
+
+[node name="Heart3" parent="." instance=ExtResource("2_5aai8")]
+position = Vector2(48, 208)
+hudHealthID = 2

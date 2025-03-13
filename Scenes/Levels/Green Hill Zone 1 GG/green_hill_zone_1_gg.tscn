@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bf0k86p2lbp5c" path="res://Assets/Images/Tilesets/Green Hill Zone Act 1 (Sonic 1 GG)/s1gg_ghz1.png" id="1_k7ris"]
 [ext_resource type="Script" uid="uid://bgk4tl4dpw1fn" path="res://Scripts/Stage Manager/stage_manager.gd" id="1_xq3y4"]
 [ext_resource type="PackedScene" uid="uid://yuswsb6k6huq" path="res://Scripts/Dream Stone/dream_stone.tscn" id="2_f7fqh"]
+[ext_resource type="PackedScene" uid="uid://c7rec25qeua64" path="res://Scenes/HUD/hud.tscn" id="2_gjo82"]
 [ext_resource type="PackedScene" uid="uid://c402ylf00mpqb" path="res://Scripts/Player/player.tscn" id="3_2etcu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t17n1"]
@@ -398,11 +399,7 @@ scenes/1/scene = ExtResource("2_f7fqh")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetScenesCollectionSource_pyevs")
 
-[sub_resource type="TileSet" id="TileSet_0r7rp"]
-tile_size = Vector2i(8, 8)
-
 [node name="Green Hill Zone 1 GG" type="Node2D"]
-position = Vector2(16, 21)
 
 [node name="StageManager" type="Node" parent="."]
 script = ExtResource("1_xq3y4")
@@ -422,11 +419,10 @@ position = Vector2(168, 0)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -8)
 
-[node name="HUDTileMap" type="TileMapLayer" parent="Player/Camera2D"]
-position = Vector2(-168, 8)
-tile_set = SubResource("TileSet_0r7rp")
+[node name="HUD" parent="." instance=ExtResource("2_gjo82")]
+follow_viewport_enabled = false
 
 [connection signal="body_entered" from="GeneralTileMap/Dream Stone" to="GeneralTileMap/Dream Stone" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@22832" to="GeneralTileMap/@Area2D@22832" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@22833" to="GeneralTileMap/@Area2D@22833" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@22834" to="GeneralTileMap/@Area2D@22834" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@26893" to="GeneralTileMap/@Area2D@26893" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@26894" to="GeneralTileMap/@Area2D@26894" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@26895" to="GeneralTileMap/@Area2D@26895" method="_on_body_entered"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://j3iqe7mt0lar"]
+
+[ext_resource type="Script" uid="uid://b3gh2oc2lkm4e" path="res://Scenes/HUD/heart.gd" id="1_nwny6"]
+[ext_resource type="Texture2D" uid="uid://cvlahy80gbgr7" path="res://Assets/Images/HUD/HUD.png" id="1_tdgm1"]
+
+[sub_resource type="Animation" id="Animation_33i1w"]
+resource_name = "Heart"
+length = 1.06667
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.833333, 0.933333, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34]
+}
+
+[sub_resource type="Animation" id="Animation_nwny6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5aai8"]
+_data = {
+&"Heart": SubResource("Animation_33i1w"),
+&"RESET": SubResource("Animation_nwny6")
+}
+
+[node name="Heart" type="Node2D"]
+script = ExtResource("1_nwny6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tdgm1")
+hframes = 10
+vframes = 5
+frame = 30
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_5aai8")
+}
+autoplay = "Heart"

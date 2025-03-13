@@ -1,10 +1,11 @@
 extends CharacterBody2D
 class_name Player
+signal hit
 
 
-const SPEED = 90.000
-const FLOATINGSPEED = 30.000
-const JUMP_VELOCITY = -240.0
+@export var SPEED = 90.000
+@export var FLOATING_SPEED = 30.000
+@export var JUMP_VELOCITY = -240.0
 const FLOAT_VELOCITY = 60.000
 
 @onready var sprite = $Sprite2D
@@ -21,6 +22,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		$Sounds/Jump.play()
 		velocity.y = JUMP_VELOCITY
 	
 	# Floating thinker.
@@ -50,7 +52,7 @@ func _physics_process(delta):
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	if direction:
 		if floating == true:
-			velocity.x = direction * FLOATINGSPEED
+			velocity.x = direction * FLOATING_SPEED
 		else:
 			velocity.x = direction * SPEED
 	else:

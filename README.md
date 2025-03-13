@@ -8,7 +8,10 @@ ShinySkink9185 (made the game)
 
 ASSETS TAKEN FROM:
 Klonoa: Empire of Dreams (GBA)
-Ripped by Frario, AzRaezel/Dan
+Ripped by Frario, AzRaezel/Dan, Dark Angel, DogInDaGrass
+
+Sonic the Hedgehog (Game Gear)
+Ripped by Techokami
 
 SPECIAL THANKS (in alphabetical order):
 1337b2

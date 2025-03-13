@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://c402ylf00mpqb"]
+[gd_scene load_steps=24 format=3 uid="uid://c402ylf00mpqb"]
 
 [ext_resource type="Script" uid="uid://bpkscdyn8c4dx" path="res://Scripts/Player/player.gd" id="1_4u45w"]
 [ext_resource type="Texture2D" uid="uid://8uhlqneajqnr" path="res://Assets/Images/Klonoa/Klonoa.png" id="1_xwdok"]
+[ext_resource type="AudioStream" uid="uid://bwrj05ntntfnt" path="res://Assets/Sounds/Klonoa/Jump.wav" id="3_ejydr"]
 
 [sub_resource type="Animation" id="Animation_q2nwk"]
 resource_name = "Fall"
@@ -17,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666668, 0.133334, 0.2, 0.266667, 0.333334),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [108, 109, 110, 111, 112, 113]
+"values": [120, 121, 122, 123, 124, 125]
 }
 
 [sub_resource type="Animation" id="Animation_7f10n"]
@@ -39,7 +40,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.133334, 0.250001, 0.383334),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [99, 100, 101, 102]
+"values": [110, 111, 112, 113]
 }
 
 [sub_resource type="Animation" id="Animation_lc1j3"]
@@ -57,7 +58,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666668, 0.133334, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [90, 91, 92, 93]
+"values": [100, 101, 102, 103]
 }
 
 [sub_resource type="Animation" id="Animation_6k02p"]
@@ -74,7 +75,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0500001, 0.1, 0.15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [117, 118, 119, 120]
+"values": [130, 131, 132, 133]
 }
 
 [sub_resource type="Animation" id="Animation_sefyh"]
@@ -125,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.333334, 0.666668, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [72, 73, 74, 75]
+"values": [80, 81, 82, 83]
 }
 
 [sub_resource type="Animation" id="Animation_r4nux"]
@@ -143,7 +144,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.333334, 0.666668, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [54, 55, 56, 57]
+"values": [60, 61, 62, 63]
 }
 
 [sub_resource type="Animation" id="Animation_dus4b"]
@@ -164,7 +165,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.133334, 0.400001, 0.500001, 0.633335, 0.700001),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [9, 10, 11, 12, 11, 10]
+"values": [10, 11, 12, 13, 12, 11]
 }
 
 [sub_resource type="Animation" id="Animation_v8783"]
@@ -174,6 +175,18 @@ step = 0.0166667
 [sub_resource type="Animation" id="Animation_a3bkf"]
 resource_name = "Wait 3"
 step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0333334, 0.0500001, 0.0666668, 0.0833335, 0.1, 0.116667, 0.133334, 0.15, 0.166667, 0.183334, 0.2, 0.216667, 0.233334, 0.25, 0.266667, 0.283334, 0.300001, 0.316667, 0.333334, 0.350001, 0.366667, 0.383334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [27, 28, 27, 28, 27, 28, 27, 29, 30, 31, 32, 31, 32, 31, 32, 31, 33, 31, 33, 31, 33, 31, 33, 31]
+}
 
 [sub_resource type="Animation" id="Animation_nmb86"]
 resource_name = "Wait 4"
@@ -194,7 +207,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666668, 0.133333, 0.2, 0.266667, 0.333334, 0.400001, 0.466668),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [45, 46, 47, 48, 49, 50, 51, 52]
+"values": [50, 51, 52, 53, 54, 55, 56, 57]
 }
 
 [sub_resource type="Animation" id="Animation_y2m7m"]
@@ -212,7 +225,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666668, 0.133334, 0.2, 0.266667, 0.333334, 0.400001, 0.466668),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [81, 82, 83, 84, 85, 86, 87, 88]
+"values": [90, 91, 92, 93, 94, 95, 96, 97]
 }
 
 [sub_resource type="Animation" id="Animation_sgcvn"]
@@ -230,7 +243,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666668, 0.133334, 0.2, 0.266667, 0.333334, 0.400001, 0.466668),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [63, 64, 65, 66, 67, 68, 69, 70]
+"values": [70, 71, 72, 73, 74, 75, 76, 77]
 }
 
 [sub_resource type="Animation" id="Animation_dwebq"]
@@ -267,7 +280,7 @@ script = ExtResource("1_4u45w")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
 texture = ExtResource("1_xwdok")
-hframes = 9
+hframes = 10
 vframes = 21
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -280,3 +293,10 @@ autoplay = "Stand"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_t60np")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Voice" type="Node" parent="Sounds"]
+
+[node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_ejydr")
