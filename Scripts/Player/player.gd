@@ -30,6 +30,7 @@ func _physics_process(delta):
 		hasFloated = true
 		floating = true
 	
+	# Floating.
 	if floating == true and Input.is_action_pressed("jump") and floatingTimer < 1.133 and not is_on_floor():
 		if floatingTimer < 0.3:
 			floatingTimer += delta
@@ -96,3 +97,12 @@ func _physics_process(delta):
 			animation.play("Fall")
 	
 	move_and_slide()
+
+# Initialize a hit.
+func _on_hitbox_area_entered(area):
+	if area.get_tree().root is Enemy:
+		hit.emit()
+
+# Get him hurt on hit.
+func _on_hit():
+	velocity.y = JUMP_VELOCITY

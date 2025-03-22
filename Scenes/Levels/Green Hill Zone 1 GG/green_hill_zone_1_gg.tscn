@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://clpwmdf88vw2u"]
+[gd_scene load_steps=14 format=4 uid="uid://clpwmdf88vw2u"]
 
 [ext_resource type="PackedScene" uid="uid://d1m5gqetklr6g" path="res://Scenes/Levels/Green Hill Zone 1 GG/Special Tiles/yellow_flower.tscn" id="1_ajmm4"]
 [ext_resource type="Texture2D" uid="uid://bf0k86p2lbp5c" path="res://Assets/Images/Tilesets/Green Hill Zone Act 1 (Sonic 1 GG)/s1gg_ghz1.png" id="1_k7ris"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://yuswsb6k6huq" path="res://Scripts/Dream Stone/dream_stone.tscn" id="2_f7fqh"]
 [ext_resource type="PackedScene" uid="uid://c7rec25qeua64" path="res://Scenes/HUD/hud.tscn" id="2_gjo82"]
 [ext_resource type="PackedScene" uid="uid://c402ylf00mpqb" path="res://Scripts/Player/player.tscn" id="3_2etcu"]
+[ext_resource type="PackedScene" uid="uid://biahco812v51h" path="res://Scenes/Enemies/Moo/moo.tscn" id="5_nrw2e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t17n1"]
 
@@ -394,6 +395,7 @@ sources/0 = SubResource("TileSetScenesCollectionSource_swr4d")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_pyevs"]
 scenes/1/scene = ExtResource("2_f7fqh")
+scenes/2/scene = ExtResource("5_nrw2e")
 
 [sub_resource type="TileSet" id="TileSet_20oc4"]
 physics_layer_0/collision_layer = 1
@@ -410,7 +412,7 @@ tile_set = SubResource("TileSet_wqd6e")
 
 [node name="GeneralTileMap" type="TileMapLayer" parent="."]
 position = Vector2(0, 8)
-tile_map_data = PackedByteArray("AAAcAPv/AAAAAAAAAQAdAPv/AAAAAAAAAQAeAPv/AAAAAAAAAQAfAPv/AAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAcAPv/AAAAAAAAAQAdAPv/AAAAAAAAAQAeAPv/AAAAAAAAAQAfAPv/AAAAAAAAAQAhAPz/AAAAAAAAAgA=")
 tile_set = SubResource("TileSet_20oc4")
 
 [node name="Player" parent="." instance=ExtResource("3_2etcu")]
@@ -419,10 +421,10 @@ position = Vector2(168, 0)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -8)
 
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Moo" parent="Enemies" instance=ExtResource("5_nrw2e")]
+position = Vector2(217, 0)
+
 [node name="HUD" parent="." instance=ExtResource("2_gjo82")]
 follow_viewport_enabled = false
-
-[connection signal="body_entered" from="GeneralTileMap/Dream Stone" to="GeneralTileMap/Dream Stone" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@26893" to="GeneralTileMap/@Area2D@26893" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@26894" to="GeneralTileMap/@Area2D@26894" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@26895" to="GeneralTileMap/@Area2D@26895" method="_on_body_entered"]

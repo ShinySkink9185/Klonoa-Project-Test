@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c402ylf00mpqb"]
+[gd_scene load_steps=25 format=3 uid="uid://c402ylf00mpqb"]
 
 [ext_resource type="Script" uid="uid://bpkscdyn8c4dx" path="res://Scripts/Player/player.gd" id="1_4u45w"]
 [ext_resource type="Texture2D" uid="uid://8uhlqneajqnr" path="res://Assets/Images/Klonoa/Klonoa.png" id="1_xwdok"]
@@ -274,7 +274,11 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t60np"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejydr"]
+size = Vector2(18, 20)
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_4u45w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -300,3 +304,12 @@ shape = SubResource("RectangleShape2D_t60np")
 
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("3_ejydr")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_ejydr")
+
+[connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
