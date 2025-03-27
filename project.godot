@@ -21,6 +21,10 @@ window/size/viewport_height=216
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[global_group]
+
+damageHitbox="This type of hitbox can hurt Klonoa."
+
 [input]
 
 moveRight={

@@ -100,9 +100,10 @@ func _physics_process(delta):
 
 # Initialize a hit.
 func _on_hitbox_area_entered(area):
-	if area.get_tree().root is Enemy:
+	if area.is_in_group("damageHitbox"):
 		hit.emit()
 
 # Get him hurt on hit.
+# TODO: Actually get him hurt instead of this demo.
 func _on_hit():
 	velocity.y = JUMP_VELOCITY

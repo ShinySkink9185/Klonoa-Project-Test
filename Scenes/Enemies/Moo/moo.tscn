@@ -97,7 +97,7 @@ autoplay = "Walk"
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_jvekt")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["damageHitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -10)
