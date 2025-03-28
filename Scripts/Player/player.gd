@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 signal hit
 
+var stage_manager = load("res://Scripts/Stage Manager/stage_manager.gd")
 
 @export var SPEED = 90.000
 @export var FLOATING_SPEED = 30.000
@@ -14,6 +15,9 @@ const FLOAT_VELOCITY = 60.000
 var floatingTimer = 0
 var floating = false
 var hasFloated = false
+var isHurt = false
+var hurtTimer = 0
+var bufferTimer = 0
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -67,7 +71,9 @@ func _physics_process(delta):
 	
 	# Animations!
 	
-	if is_on_floor():
+	if isHurt == true:
+		animation.play("Hurt")
+	elif is_on_floor():
 		hasFloated = false
 		if direction == 0:
 			if animation.current_animation == "Fall":
@@ -104,6 +110,8 @@ func _on_hitbox_area_entered(area):
 		hit.emit()
 
 # Get him hurt on hit.
-# TODO: Actually get him hurt instead of this demo.
+# TODO: Pull off animations and buffer frames. Should do that in _physics_process instead of this function.
 func _on_hit():
-	velocity.y = JUMP_VELOCITY
+	if isHurt == false && bufferTimer <= 0:
+		isHurt = true
+		stage_manager.adjustHealth(-1)

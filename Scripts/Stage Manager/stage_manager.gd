@@ -7,3 +7,6 @@ static var health = 3
 static func getDreamStones(amount):
 	dreamStones += amount
 	print(dreamStones)
+
+static func adjustHealth(amount):
+	health += amount
