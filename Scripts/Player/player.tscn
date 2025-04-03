@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://c402ylf00mpqb"]
+[gd_scene load_steps=27 format=3 uid="uid://c402ylf00mpqb"]
 
 [ext_resource type="Script" uid="uid://bpkscdyn8c4dx" path="res://Scripts/Player/player.gd" id="1_4u45w"]
 [ext_resource type="Texture2D" uid="uid://8uhlqneajqnr" path="res://Assets/Images/Klonoa/Klonoa.png" id="1_xwdok"]
+[ext_resource type="AudioStream" uid="uid://bntvg8crtnx0k" path="res://Assets/Sounds/Voices/Klonoa/Hurt.wav" id="3_ea7v2"]
 [ext_resource type="AudioStream" uid="uid://bwrj05ntntfnt" path="res://Assets/Sounds/Klonoa/Jump.wav" id="3_ejydr"]
 
 [sub_resource type="Animation" id="Animation_q2nwk"]
@@ -320,6 +321,9 @@ shape = SubResource("RectangleShape2D_t60np")
 [node name="Sounds" type="Node" parent="."]
 
 [node name="Voice" type="Node" parent="Sounds"]
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Sounds/Voice"]
+stream = ExtResource("3_ea7v2")
 
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("3_ejydr")

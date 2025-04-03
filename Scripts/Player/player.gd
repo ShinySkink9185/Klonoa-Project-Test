@@ -55,7 +55,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	if direction:
+	if direction && isHurt == false:
 		if floating == true:
 			velocity.x = direction * FLOATING_SPEED
 		else:
@@ -64,13 +64,40 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	# Handle direction facing.
-	if direction > 0:
+	if direction > 0 && isHurt == false:
 		sprite.flip_h = false
-	else: if direction < 0:
+	else: if direction < 0 && isHurt == false:
 		sprite.flip_h = true
 	
-	# Animations!
+	# Hurt knockback
+	if isHurt == true && hurtTimer < 0.2667:
+		if sprite.flip_h == false:
+			velocity.x = -60
+		else:
+			velocity.x = 60
+		velocity.y = -60
+		hurtTimer += delta
+		floating = false
+		floatingTimer = 0
+	else: if hurtTimer >= 0.2667:
+		isHurt = false
+		hurtTimer = 0
+		hasFloated = false
+		
+	# Buffer frames
+	if bufferTimer > 0:
+		var bufferTimerBlinkReference = bufferTimer
+		while bufferTimerBlinkReference >= 0.0667:
+			bufferTimerBlinkReference -= 0.0667
+		if bufferTimerBlinkReference >= 0.0334:
+			sprite.hide()
+		else:
+			sprite.show()
+		bufferTimer -= delta
+	else:
+		sprite.show()
 	
+	# Animations!
 	if isHurt == true:
 		animation.play("Hurt")
 	elif is_on_floor():
@@ -110,8 +137,9 @@ func _on_hitbox_area_entered(area):
 		hit.emit()
 
 # Get him hurt on hit.
-# TODO: Pull off animations and buffer frames. Should do that in _physics_process instead of this function.
 func _on_hit():
 	if isHurt == false && bufferTimer <= 0:
 		isHurt = true
+		bufferTimer = 1
 		stage_manager.adjustHealth(-1)
+		$Sounds/Voice/Hurt.play()
