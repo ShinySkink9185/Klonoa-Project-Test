@@ -18,6 +18,9 @@ var hasFloated = false
 var isHurt = false
 var hurtTimer = 0
 var bufferTimer = 0
+var firing = false
+var fireDelayTimer = 0
+var grabbing = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -51,11 +54,27 @@ func _physics_process(delta):
 		floating = false
 		floatingTimer = 0
 		
+	# Firing the Wind Bullet
+	if Input.is_action_pressed("fire") and isHurt == false:
+		firing = true
+		if floating == true:
+			velocity.y = 0
+			hasFloated = true
+			floating = false
+			floatingTimer = 0
+	
+	if firing == true:
+		if fireDelayTimer >= 0.3667:
+			firing = false
+		else:
+			fireDelayTimer += delta
+	else:
+		fireDelayTimer = 0
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("moveLeft", "moveRight")
-	if direction && isHurt == false:
+	if direction && isHurt == false && not (is_on_floor() && firing == true):
 		if floating == true:
 			velocity.x = direction * FLOATING_SPEED
 		else:
@@ -100,6 +119,8 @@ func _physics_process(delta):
 	# Animations!
 	if isHurt == true:
 		animation.play("Hurt")
+	elif firing == true:
+		animation.play("Fire")
 	elif is_on_floor():
 		hasFloated = false
 		if direction == 0:
