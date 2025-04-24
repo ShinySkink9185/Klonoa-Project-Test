@@ -347,5 +347,8 @@ stream = ExtResource("3_ejydr")
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_ejydr")
 
+[node name="WindBulletSpawn" type="Marker2D" parent="."]
+position = Vector2(12, -16)
+
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

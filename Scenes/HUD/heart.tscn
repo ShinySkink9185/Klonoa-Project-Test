@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://j3iqe7mt0lar"]
 
-[ext_resource type="Script" uid="uid://b3gh2oc2lkm4e" path="res://Scenes/HUD/heart.gd" id="1_nwny6"]
+[ext_resource type="Script" uid="uid://b3gh2oc2lkm4e" path="res://Scripts/HUD/heart.gd" id="1_nwny6"]
 [ext_resource type="Texture2D" uid="uid://cvlahy80gbgr7" path="res://Assets/Images/HUD/HUD.png" id="1_tdgm1"]
 
 [sub_resource type="Animation" id="Animation_33i1w"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://biahco812v51h"]
 
-[ext_resource type="Script" uid="uid://bf17arjbhumlf" path="res://Scenes/Enemies/Moo/moo.gd" id="1_ga75c"]
+[ext_resource type="Script" uid="uid://bf17arjbhumlf" path="res://Scripts/Enemies/Moo/moo.gd" id="1_ga75c"]
 [ext_resource type="Texture2D" uid="uid://bjrfbnxt3aevx" path="res://Assets/Images/Enemies/Moo/Moo.png" id="1_jvekt"]
 
 [sub_resource type="Animation" id="Animation_10ytl"]

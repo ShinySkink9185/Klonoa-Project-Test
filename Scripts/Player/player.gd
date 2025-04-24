@@ -11,6 +11,7 @@ const FLOAT_VELOCITY = 60.000
 
 @onready var sprite = $Sprite2D
 @onready var animation = $AnimationPlayer
+@onready var windBulletScene = load("res://Scenes/Player/Wind Bullet/wind_bullet.tscn")
 
 var floatingTimer = 0
 var floating = false
@@ -42,7 +43,7 @@ func _physics_process(delta):
 		if floatingTimer < 0.3:
 			floatingTimer += delta
 			velocity.y = FLOAT_VELOCITY
-		else: if floatingTimer < 0.833:
+		elif floatingTimer < 0.833:
 			floatingTimer += delta
 			velocity.y = 0
 		else:
@@ -55,8 +56,15 @@ func _physics_process(delta):
 		floatingTimer = 0
 		
 	# Firing the Wind Bullet
-	if Input.is_action_pressed("fire") and isHurt == false:
-		firing = true
+	# TODO: Spawn the Wind Bullet properly
+	if Input.is_action_just_pressed("fire") and isHurt == false:
+		if firing == false:
+			firing = true
+			var windBullet = windBulletScene.instantiate()
+			owner.add_child(windBullet)
+			# TODO: The bullet spawn marker location is inaccurate.
+			# Fix that in the 2D side.
+			windBullet.transform = $WindBulletSpawn.global_transform
 		if floating == true:
 			velocity.y = 0
 			hasFloated = true
@@ -85,7 +93,7 @@ func _physics_process(delta):
 	# Handle direction facing.
 	if direction > 0 && isHurt == false:
 		sprite.flip_h = false
-	else: if direction < 0 && isHurt == false:
+	elif direction < 0 && isHurt == false:
 		sprite.flip_h = true
 	
 	# Hurt knockback
@@ -98,7 +106,7 @@ func _physics_process(delta):
 		hurtTimer += delta
 		floating = false
 		floatingTimer = 0
-	else: if hurtTimer >= 0.2667:
+	elif hurtTimer >= 0.2667:
 		isHurt = false
 		hurtTimer = 0
 		hasFloated = false
@@ -126,22 +134,22 @@ func _physics_process(delta):
 		if direction == 0:
 			if animation.current_animation == "Fall":
 				animation.play("Land")
-			else: if animation.current_animation != "Land":
+			elif animation.current_animation != "Land":
 				if Input.is_action_pressed("moveDown") == true and Input.is_action_pressed("moveUp") == false:
 					animation.play("Walk (Front)")
-				else: if Input.is_action_pressed("moveUp") == true and Input.is_action_pressed("moveDown") == false:
+				elif Input.is_action_pressed("moveUp") == true and Input.is_action_pressed("moveDown") == false:
 					animation.play("Walk (Back)")
-				else: if animation.current_animation == "Walk (Front)" or animation.current_animation == "Stand (Front)":
+				elif animation.current_animation == "Walk (Front)" or animation.current_animation == "Stand (Front)":
 					animation.play("Stand (Front)")
-				else: if animation.current_animation == "Walk (Back)" or animation.current_animation == "Stand (Back)":
+				elif animation.current_animation == "Walk (Back)" or animation.current_animation == "Stand (Back)":
 					animation.play("Stand (Back)")
 				else:
 					animation.play("Stand")
 		else:
 			animation.play("Walk")
-	else: if floating == true:
+	elif floating == true:
 		animation.play("Float")
-	else: if velocity.y < 0:
+	elif velocity.y < 0:
 		animation.play("Jump")
 	else:
 		if animation.current_animation_position >= 0.4:
