@@ -13,19 +13,16 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 	
 	# Set initial direction.
-	var direction = "left"
+	var direction = -1
 	
 	# Handle direction facing.
-	if direction == "right":
+	if direction > 0:
 		sprite.flip_h = false
-	elif direction == "left":
+	elif direction < 0:
 		sprite.flip_h = true
 	
 	# Handle movement.
-	if direction == "right":
-		velocity.x = SPEED
-	elif direction == "left":
-		velocity.x = -SPEED
+	velocity.x = SPEED * direction
 	
 	# Animation.
 	animation.play("Walk")

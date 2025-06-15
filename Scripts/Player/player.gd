@@ -4,6 +4,7 @@ signal hit
 
 var stage_manager = load("res://Scripts/Stage Manager/stage_manager.gd")
 
+# These may change depending on the state Klonoa is in (surfboard, e.t.c.)
 @export var SPEED = 90.000
 @export var FLOATING_SPEED = 30.000
 @export var JUMP_VELOCITY = -240.0
@@ -13,6 +14,7 @@ const FLOAT_VELOCITY = 60.000
 @onready var animation = $AnimationPlayer
 @onready var windBulletScene = load("res://Scenes/Player/Wind Bullet/wind_bullet.tscn")
 
+# All of our timers and checks
 var floatingTimer = 0
 var floating = false
 var hasFloated = false
@@ -56,14 +58,14 @@ func _physics_process(delta):
 		floatingTimer = 0
 		
 	# Firing the Wind Bullet
-	# TODO: Spawn the Wind Bullet properly
 	if Input.is_action_just_pressed("fire") and isHurt == false:
 		if firing == false:
 			firing = true
 			var windBullet = windBulletScene.instantiate()
+			# Pass the player to the Wind Bullet
+			# Self-note: use a method like this instead of getting a node's parent!
+			windBullet.player = self
 			owner.add_child(windBullet)
-			# TODO: The bullet spawn marker location is inaccurate.
-			# Fix that in the 2D side.
 			windBullet.transform = $WindBulletSpawn.global_transform
 		if floating == true:
 			velocity.y = 0
@@ -80,8 +82,13 @@ func _physics_process(delta):
 		fireDelayTimer = 0
 		
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("moveLeft", "moveRight")
+	# Don't make direction more than 1, or else some smart guy'll abuse stick physics.
+	if direction > 1:
+		direction = 1
+	elif direction < -1:
+		direction = -1
+	
 	if direction && isHurt == false && not (is_on_floor() && firing == true):
 		if floating == true:
 			velocity.x = direction * FLOATING_SPEED
@@ -93,8 +100,10 @@ func _physics_process(delta):
 	# Handle direction facing.
 	if direction > 0 && isHurt == false:
 		sprite.flip_h = false
+		$WindBulletSpawn.set_position(Vector2(12, -16))
 	elif direction < 0 && isHurt == false:
 		sprite.flip_h = true
+		$WindBulletSpawn.set_position(Vector2(-12, -16))
 	
 	# Hurt knockback
 	if isHurt == true && hurtTimer < 0.2667:
@@ -127,6 +136,8 @@ func _physics_process(delta):
 	# Animations!
 	if isHurt == true:
 		animation.play("Hurt")
+	# TODO: Figure out how to make this animation be interrupted
+	# by other animations
 	elif firing == true:
 		animation.play("Fire")
 	elif is_on_floor():
