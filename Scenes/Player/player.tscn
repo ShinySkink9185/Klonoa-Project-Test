@@ -341,7 +341,7 @@ stream = ExtResource("3_ea7v2")
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("3_ejydr")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["playerHitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -10)

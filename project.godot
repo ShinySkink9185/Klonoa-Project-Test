@@ -24,6 +24,8 @@ window/stretch/aspect="expand"
 [global_group]
 
 damageHitbox="This type of hitbox can hurt Klonoa."
+windBulletHitbox="Hitbox for the Wind Bullet."
+playerHitbox="Klonoa's hitbox."
 
 [input]
 

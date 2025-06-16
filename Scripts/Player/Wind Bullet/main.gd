@@ -1,4 +1,5 @@
 extends Node2D
+class_name WindBullet
 
 # Direction of the Wind Bullet. This is set by the player's direction.
 var direction = 0
@@ -13,6 +14,6 @@ func _ready():
 	else:
 		direction = 1
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	playerPosition = player.global_position
 	pass
