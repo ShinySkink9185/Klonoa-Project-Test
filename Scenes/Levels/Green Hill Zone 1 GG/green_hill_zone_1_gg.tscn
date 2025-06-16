@@ -427,3 +427,8 @@ position = Vector2(536, -32)
 
 [node name="HUD" parent="." instance=ExtResource("2_gjo82")]
 follow_viewport_enabled = false
+
+[connection signal="body_entered" from="GeneralTileMap/Dream Stone" to="GeneralTileMap/Dream Stone" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@22769" to="GeneralTileMap/@Area2D@22769" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@22770" to="GeneralTileMap/@Area2D@22770" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@22771" to="GeneralTileMap/@Area2D@22771" method="_on_body_entered"]
