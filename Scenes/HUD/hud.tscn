@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7rec25qeua64"]
+[gd_scene load_steps=7 format=3 uid="uid://c7rec25qeua64"]
 
 [ext_resource type="Texture2D" uid="uid://cvlahy80gbgr7" path="res://Assets/Images/HUD/HUD.png" id="1_33i1w"]
 [ext_resource type="PackedScene" uid="uid://j3iqe7mt0lar" path="res://Scenes/HUD/heart.tscn" id="2_5aai8"]
+[ext_resource type="FontFile" uid="uid://bo1nwwloi60sh" path="res://Assets/Images/HUD/HUDFont.png" id="3_a56j6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a56j6"]
 atlas = ExtResource("1_33i1w")
@@ -37,7 +38,6 @@ offset_top = -16.0
 offset_right = 160.0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_33i1w")
-expand_mode = 1
 
 [node name="BarEnd" type="TextureRect" parent="."]
 anchors_preset = 3
@@ -61,3 +61,13 @@ hudHealthID = 1
 [node name="Heart3" parent="." instance=ExtResource("2_5aai8")]
 position = Vector2(48, 208)
 hudHealthID = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 360.0
+offset_top = 200.0
+offset_right = 376.0
+offset_bottom = 216.0
+theme_override_fonts/font = ExtResource("3_a56j6")
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1

@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://bo1nwwloi60sh"
+path="res://.godot/imported/HUDFont.png-28e55f59c8761eaa625cf2afd7a2ad62.fontdata"
+
+[deps]
+
+source_file="res://Assets/Images/HUD/HUDFont.png"
+dest_files=["res://.godot/imported/HUDFont.png-28e55f59c8761eaa625cf2afd7a2ad62.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("48-57")
+kerning_pairs=PackedStringArray()
+columns=10
+rows=1
+image_margin=Rect2i(64, 32, 16, 32)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=0
