@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://c402ylf00mpqb"]
+[gd_scene load_steps=28 format=3 uid="uid://c402ylf00mpqb"]
 
 [ext_resource type="Script" uid="uid://bpkscdyn8c4dx" path="res://Scripts/Player/player.gd" id="1_4u45w"]
 [ext_resource type="Texture2D" uid="uid://8uhlqneajqnr" path="res://Assets/Images/Klonoa/Klonoa.png" id="1_xwdok"]
 [ext_resource type="AudioStream" uid="uid://bntvg8crtnx0k" path="res://Assets/Sounds/Voices/Klonoa/Hurt.wav" id="3_ea7v2"]
 [ext_resource type="AudioStream" uid="uid://bwrj05ntntfnt" path="res://Assets/Sounds/Klonoa/Jump.wav" id="3_ejydr"]
+[ext_resource type="AudioStream" uid="uid://biha05tqrn0q2" path="res://Assets/Sounds/Klonoa/Float.wav" id="5_htcer"]
 
 [sub_resource type="Animation" id="Animation_q2nwk"]
 resource_name = "Fall"
@@ -341,6 +342,9 @@ stream = ExtResource("3_ea7v2")
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("3_ejydr")
 
+[node name="Float" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_htcer")
+
 [node name="Hitbox" type="Area2D" parent="." groups=["playerHitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -351,4 +355,5 @@ shape = SubResource("RectangleShape2D_ejydr")
 position = Vector2(12, -16)
 
 [connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="finished" from="Sounds/Float" to="." method="_on_float_sound_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

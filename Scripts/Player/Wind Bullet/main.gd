@@ -13,6 +13,8 @@ func _ready():
 		direction = -1
 	else:
 		direction = 1
+	# Play SFX
+	$Sounds/FireBullet.play()
 
 func _physics_process(_delta):
 	playerPosition = player.global_position

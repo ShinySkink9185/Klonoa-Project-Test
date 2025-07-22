@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://yuswsb6k6huq"]
+[gd_scene load_steps=8 format=3 uid="uid://yuswsb6k6huq"]
 
 [ext_resource type="Script" uid="uid://d1c2qfe6q0bvu" path="res://Scripts/Dream Stone/dream_stone.gd" id="1_koqpn"]
 [ext_resource type="Texture2D" uid="uid://chkt7hwjpb42u" path="res://Assets/Images/Items/Dream Stones/Dream Stone.png" id="1_oaq1o"]
+[ext_resource type="AudioStream" uid="uid://espkvxd6kr3o" path="res://Assets/Sounds/Dream Stones/Collected.wav" id="3_yp6eo"]
 
 [sub_resource type="Animation" id="Animation_fuvno"]
 resource_name = "Float"
@@ -63,4 +64,10 @@ autoplay = "Float"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bhaih")
 
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Collected" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_yp6eo")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="Sounds/Collected" to="." method="_on_collected_sound_finished"]

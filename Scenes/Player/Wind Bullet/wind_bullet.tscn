@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dw60igbtp5bwa"]
+[gd_scene load_steps=13 format=3 uid="uid://dw60igbtp5bwa"]
 
 [ext_resource type="Script" uid="uid://c3py1uaori7up" path="res://Scripts/Player/Wind Bullet/main.gd" id="1_itp0x"]
 [ext_resource type="Script" uid="uid://0qrgkesvlf2q" path="res://Scripts/Player/Wind Bullet/shockwave.gd" id="2_bo1j2"]
 [ext_resource type="Texture2D" uid="uid://dp3bhq0hwp828" path="res://Assets/Images/Klonoa/Wind Bullet.png" id="2_tchhf"]
 [ext_resource type="Script" uid="uid://btklpee045djb" path="res://Scripts/Player/Wind Bullet/bullet.gd" id="3_bo1j2"]
+[ext_resource type="AudioStream" uid="uid://cyebqv1jsirxn" path="res://Assets/Sounds/Klonoa/Wind Bullet/FireBullet.wav" id="5_pl558"]
 
 [sub_resource type="Animation" id="Animation_bo1j2"]
 length = 0.001
@@ -131,5 +132,10 @@ vframes = 4
 frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Trail"]
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="FireBullet" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_pl558")
 
 [connection signal="animation_finished" from="Shockwave/AnimationPlayer" to="Shockwave" method="_on_animation_player_animation_finished"]

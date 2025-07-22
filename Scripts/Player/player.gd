@@ -39,6 +39,7 @@ func _physics_process(delta):
 	if velocity.y >= 0 and not is_on_floor() and hasFloated == false and Input.is_action_pressed("jump"):
 		hasFloated = true
 		floating = true
+		$Sounds/Float.play()
 	
 	# Floating.
 	if floating == true and Input.is_action_pressed("jump") and floatingTimer < 1.133 and not is_on_floor():
@@ -56,6 +57,7 @@ func _physics_process(delta):
 			velocity.y = 0
 		floating = false
 		floatingTimer = 0
+		$Sounds/Float.stop()
 		
 	# Firing the Wind Bullet
 	if Input.is_action_just_pressed("fire") and isHurt == false:
@@ -69,9 +71,9 @@ func _physics_process(delta):
 			windBullet.transform = $WindBulletSpawn.global_transform
 		if floating == true:
 			velocity.y = 0
-			hasFloated = true
 			floating = false
 			floatingTimer = 0
+			$Sounds/Float.stop()
 	
 	if firing == true:
 		if fireDelayTimer >= 0.3667:
@@ -183,3 +185,9 @@ func _on_hit():
 		bufferTimer = 1
 		stage_manager.adjustHealth(-1)
 		$Sounds/Voice/Hurt.play()
+
+# Loop the Floating sound whenever it finishes
+# Because of how this function works, it won't
+# initiate when it's stopped. Thanks, Godot devs!
+func _on_float_sound_finished():
+	$Sounds/Float.play()
