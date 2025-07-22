@@ -5,6 +5,7 @@ You are free to use, modify, or suggest things; do whatever you want with this! 
 PROJECT CREDITS:
 
 ShinySkink9185 (made the game)
+KoBeWi ("Palette swap shader with animation support" Asset)
 
 ASSETS TAKEN FROM:
 Klonoa: Empire of Dreams (GBA)
@@ -127,5 +128,6 @@ Troplucky
 Virmonth
 Weegs
 TheWhatParting
+wye
 Yume
 And plenty more...

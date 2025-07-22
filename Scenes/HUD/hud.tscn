@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7rec25qeua64"]
+[gd_scene load_steps=9 format=3 uid="uid://c7rec25qeua64"]
 
 [ext_resource type="Texture2D" uid="uid://cvlahy80gbgr7" path="res://Assets/Images/HUD/HUD.png" id="1_33i1w"]
 [ext_resource type="PackedScene" uid="uid://j3iqe7mt0lar" path="res://Scenes/HUD/heart.tscn" id="2_5aai8"]
@@ -16,6 +16,10 @@ region = Rect2(0, 0, 160, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5aai8"]
 atlas = ExtResource("1_33i1w")
 region = Rect2(8, 32, 40, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k83ni"]
+atlas = ExtResource("1_33i1w")
+region = Rect2(52, 32, 8, 16)
 
 [node name="HUD" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -52,15 +56,37 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_5aai8")
 
-[node name="Heart" parent="." instance=ExtResource("2_5aai8")]
-position = Vector2(16, 208)
+[node name="DreamStoneIcon" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -16.0
+offset_right = -72.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_k83ni")
 
-[node name="Heart2" parent="." instance=ExtResource("2_5aai8")]
-position = Vector2(32, 208)
+[node name="HeartAnchor" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Heart" parent="HeartAnchor" instance=ExtResource("2_5aai8")]
+position = Vector2(16, 32)
+
+[node name="Heart2" parent="HeartAnchor" instance=ExtResource("2_5aai8")]
+position = Vector2(32, 32)
 hudHealthID = 1
 
-[node name="Heart3" parent="." instance=ExtResource("2_5aai8")]
-position = Vector2(48, 208)
+[node name="Heart3" parent="HeartAnchor" instance=ExtResource("2_5aai8")]
+position = Vector2(48, 32)
 hudHealthID = 2
 
 [node name="DreamStoneCount" type="Label" parent="."]
@@ -69,9 +95,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -56.0
+offset_left = -72.0
 offset_top = -16.0
-offset_right = -40.0
+offset_right = -48.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_a56j6")

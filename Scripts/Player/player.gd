@@ -136,7 +136,7 @@ func _physics_process(delta):
 	# Animations!
 	if isHurt == true:
 		animation.play("Hurt")
-	# TODO: Figure out how to make this animation be interrupted
+	# TODO: Figure out how to make the below animation be interrupted
 	# by other animations
 	elif firing == true:
 		animation.play("Fire")

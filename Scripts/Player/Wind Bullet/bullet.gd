@@ -10,8 +10,6 @@ var time = 0
 var slowdownX = false
 var slowdownY = false
 
-# TODO: The drawback phase. Should follow Klonoa.
-
 func _physics_process(delta):
 	# Save the player's current position for the drawback
 	var playerPosition = mainBullet.playerPosition
