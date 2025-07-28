@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2lyqifte4b4v"]
+
+[ext_resource type="Script" uid="uid://bgk4tl4dpw1fn" path="res://Scripts/Stage Manager/stage_manager.gd" id="1_v6r5j"]
+
+[node name="StageManager" type="Node"]
+script = ExtResource("1_v6r5j")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

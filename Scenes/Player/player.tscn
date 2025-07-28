@@ -338,6 +338,7 @@ shape = SubResource("RectangleShape2D_t60np")
 
 [node name="Hurt" type="AudioStreamPlayer" parent="Sounds/Voice"]
 stream = ExtResource("3_ea7v2")
+volume_db = 13.0
 
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("3_ejydr")
