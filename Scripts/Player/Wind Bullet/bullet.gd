@@ -7,13 +7,11 @@ const SPEED = 252
 const DECELERATION = 28
 
 var time = 0
-var slowdownX = false
-var slowdownY = false
 
 func _physics_process(delta):
 	# Save the player's current position for the drawback
 	var playerPosition = mainBullet.playerPosition
-	playerPosition.x -= 10
+	playerPosition.y -= 16
 	
 	# Sprite flipping depending on the Wind Bullet's direction.
 	if velocity.x > 0:
@@ -38,32 +36,8 @@ func _physics_process(delta):
 		else:
 			velocity.x -= DECELERATION
 	elif time <= 0.35:
-		var travelSpeedX = 240
-		var travelSpeedY = 240
-		
-		# Slow down the bullet if it gets close to Klonoa
-		if global_position.x > playerPosition.x && global_position.x - playerPosition.x <= 20 || playerPosition.x > global_position.x && playerPosition.x - global_position.x >= 20:
-			slowdownX = true
-		if global_position.y > playerPosition.y && global_position.y - playerPosition.y >= 20 || playerPosition.y > global_position.y && playerPosition.y - global_position.y <= 20:
-			slowdownY = true
-		
-		if slowdownX == true:
-			travelSpeedX = 60
-		if slowdownY == true:
-			travelSpeedY = 60
-		
-		# Travel back to Klonoa.
-		# This uses hacky stuff to make sure the bullet doesn't spiral out of control
-		# whenever it's too close to Klonoa.
-		if playerPosition.x > global_position.x && playerPosition.x - global_position.x >= 0.01:
-			velocity.x = travelSpeedX
-		elif global_position.x - playerPosition.x >= 0.01:
-			velocity.x = -travelSpeedX
-		
-		if playerPosition.y - 16 > global_position.y && playerPosition.y - global_position.y >= 0.01:
-			velocity.y = travelSpeedY
-		elif global_position.y - playerPosition.y >= 0.01:
-			velocity.y = -travelSpeedY
+		velocity.x = (playerPosition.x - global_position.x)*15
+		velocity.y = (playerPosition.y - global_position.y)*15
 	else:
 		queue_free()
 	
