@@ -15,9 +15,9 @@ func _physics_process(delta):
 	
 	# Sprite flipping depending on the Wind Bullet's direction.
 	if velocity.x > 0:
-		sprite.flip_h = false
-	elif velocity.x < 0:
 		sprite.flip_h = true
+	elif velocity.x < 0:
+		sprite.flip_h = false
 	
 	# Would've done this in func _ready():, but for some reason that always
 	# detected mainBullet.direction as fulfilling the "else" condition
@@ -36,8 +36,8 @@ func _physics_process(delta):
 		else:
 			velocity.x -= DECELERATION
 	elif time <= 0.35:
-		velocity.x = (playerPosition.x - global_position.x)*15
-		velocity.y = (playerPosition.y - global_position.y)*15
+		velocity.x = (playerPosition.x - global_position.x)*10
+		velocity.y = (playerPosition.y - global_position.y)*10
 	else:
 		queue_free()
 	
