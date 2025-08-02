@@ -444,3 +444,21 @@ position = Vector2(568, -32)
 
 [node name="HUD" parent="." instance=ExtResource("2_gjo82")]
 follow_viewport_enabled = false
+
+[connection signal="body_entered" from="GeneralTileMap/Dream Stone" to="GeneralTileMap/Dream Stone" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51607" to="GeneralTileMap/@Area2D@51607" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51608" to="GeneralTileMap/@Area2D@51608" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51609" to="GeneralTileMap/@Area2D@51609" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51610" to="GeneralTileMap/@Area2D@51610" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51611" to="GeneralTileMap/@Area2D@51611" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51612" to="GeneralTileMap/@Area2D@51612" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51613" to="GeneralTileMap/@Area2D@51613" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51614" to="GeneralTileMap/@Area2D@51614" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51615" to="GeneralTileMap/@Area2D@51615" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51616" to="GeneralTileMap/@Area2D@51616" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51617" to="GeneralTileMap/@Area2D@51617" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51618" to="GeneralTileMap/@Area2D@51618" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51619" to="GeneralTileMap/@Area2D@51619" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51620" to="GeneralTileMap/@Area2D@51620" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/@Area2D@51621" to="GeneralTileMap/@Area2D@51621" method="_on_body_entered"]
+[connection signal="body_entered" from="GeneralTileMap/Blue Dream Stone" to="GeneralTileMap/Blue Dream Stone" method="_on_body_entered"]

@@ -10,9 +10,11 @@ KoBeWi ("Palette swap shader with animation support" Asset)
 ASSETS TAKEN FROM:
 Klonoa: Empire of Dreams (GBA)
 Ripped by Frario, AzRaezel/Dan, Dark Angel, DogInDaGrass
+Made by Bandai Namco
 
 Sonic the Hedgehog (Game Gear)
 Ripped by Techokami
+Made by SEGA, Ancient
 
 SPECIAL THANKS (in alphabetical order):
 1337b2

@@ -20,10 +20,8 @@ func _physics_process(delta):
 	# ...then if the delay is big enough and there's no other time that
 	# fulfills that, the Trail goes to the Bullet!
 	if mainBullet.bulletPosition != null:
-		print("Detected Bullet Position!")
 		var bulletPosition = mainBullet.bulletPosition
 		history.append({"time": delayTimer, "position": mainBullet.bulletPosition})
-		print(history)
 		var savedPosition = null
 		var count = 0
 		for historyEntry in history:
