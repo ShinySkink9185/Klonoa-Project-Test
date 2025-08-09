@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://biahco812v51h"]
+[gd_scene load_steps=11 format=3 uid="uid://chxhpq7qu4jrm"]
 
-[ext_resource type="Script" uid="uid://bf17arjbhumlf" path="res://Scripts/Enemies/Moo/moo.gd" id="1_ga75c"]
+[ext_resource type="Script" uid="uid://dyjvp2jeqdgv8" path="res://Scripts/Enemies/Moo/moo.gd" id="1_ga75c"]
 [ext_resource type="Texture2D" uid="uid://bjrfbnxt3aevx" path="res://Assets/Images/Enemies/Moo/Moo.png" id="1_jvekt"]
 
 [sub_resource type="Animation" id="Animation_10ytl"]
@@ -70,15 +70,17 @@ _data = {
 &"Walk": SubResource("Animation_jvekt")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvekt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10ytl"]
 size = Vector2(26, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga75c"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5aml2"]
 size = Vector2(2, 20)
 
 [node name="Moo" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_ga75c")
+SPEED = 30.0
+metadata/_custom_type_script = "uid://bf17arjbhumlf"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -95,10 +97,10 @@ autoplay = "Walk"
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
-shape = SubResource("RectangleShape2D_jvekt")
+shape = SubResource("RectangleShape2D_10ytl")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["damageHitbox"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -10)
-shape = SubResource("RectangleShape2D_ga75c")
+shape = SubResource("RectangleShape2D_5aml2")

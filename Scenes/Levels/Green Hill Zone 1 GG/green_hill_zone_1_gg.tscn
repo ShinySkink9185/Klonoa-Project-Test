@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://yka8wtri55sh" path="res://Assets/Images/Tilesets/Green Hill Zone Act 1 (Sonic 1 GG)/s1gg_ghz1PALETTE.png" id="2_okcmm"]
 [ext_resource type="PackedScene" uid="uid://c402ylf00mpqb" path="res://Scenes/Player/player.tscn" id="3_2etcu"]
 [ext_resource type="Script" uid="uid://vrs1twpulcy0" path="res://addons/PaletteSwapShader/PaletteMaterial.gd" id="3_hlh4j"]
-[ext_resource type="PackedScene" uid="uid://biahco812v51h" path="res://Scenes/Enemies/Moo/moo.tscn" id="5_nrw2e"]
+[ext_resource type="PackedScene" uid="uid://chxhpq7qu4jrm" path="res://Scenes/Enemies/Moo/moo.tscn" id="5_nrw2e"]
 [ext_resource type="PackedScene" uid="uid://dcc53fieutkij" path="res://Scenes/Dream Stone/blue_dream_stone.tscn" id="8_j6urj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j6urj"]
@@ -444,21 +444,3 @@ position = Vector2(568, -32)
 
 [node name="HUD" parent="." instance=ExtResource("2_gjo82")]
 follow_viewport_enabled = false
-
-[connection signal="body_entered" from="GeneralTileMap/Dream Stone" to="GeneralTileMap/Dream Stone" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51607" to="GeneralTileMap/@Area2D@51607" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51608" to="GeneralTileMap/@Area2D@51608" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51609" to="GeneralTileMap/@Area2D@51609" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51610" to="GeneralTileMap/@Area2D@51610" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51611" to="GeneralTileMap/@Area2D@51611" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51612" to="GeneralTileMap/@Area2D@51612" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51613" to="GeneralTileMap/@Area2D@51613" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51614" to="GeneralTileMap/@Area2D@51614" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51615" to="GeneralTileMap/@Area2D@51615" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51616" to="GeneralTileMap/@Area2D@51616" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51617" to="GeneralTileMap/@Area2D@51617" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51618" to="GeneralTileMap/@Area2D@51618" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51619" to="GeneralTileMap/@Area2D@51619" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51620" to="GeneralTileMap/@Area2D@51620" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/@Area2D@51621" to="GeneralTileMap/@Area2D@51621" method="_on_body_entered"]
-[connection signal="body_entered" from="GeneralTileMap/Blue Dream Stone" to="GeneralTileMap/Blue Dream Stone" method="_on_body_entered"]

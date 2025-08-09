@@ -141,4 +141,5 @@ shape = SubResource("RectangleShape2D_itp0x")
 stream = ExtResource("5_pl558")
 
 [connection signal="animation_finished" from="Shockwave/AnimationPlayer" to="Shockwave" method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Bullet/Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="finished" from="Sounds/FireBullet" to="." method="_on_fire_bullet_sound_finished"]

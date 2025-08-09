@@ -36,3 +36,8 @@ func _physics_process(_delta):
 
 func _on_fire_bullet_sound_finished():
 	checkFree2 = true
+	
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("damageHitbox"):
+		area.get_path()
+		print(area.get_path())

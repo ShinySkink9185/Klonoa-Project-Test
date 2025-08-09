@@ -19,3 +19,4 @@ static func adjustHealth(amount):
 
 func _on_music_player_finished():
 	$MusicPlayer.seek(LOOP_POINT)
+	$MusicPlayer.play()

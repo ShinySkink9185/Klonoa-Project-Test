@@ -1,11 +1,6 @@
-extends CharacterBody2D
-class_name Enemy
+extends Enemy
 
-@export var SPEED = 30.000
 @export var HOVERBOARD = false
-
-@onready var sprite = $Sprite2D
-@onready var animation = $AnimationPlayer
 
 func _physics_process(delta):
 	# Add gravity.
