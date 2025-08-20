@@ -36,8 +36,10 @@ func _physics_process(_delta):
 
 func _on_fire_bullet_sound_finished():
 	checkFree2 = true
-	
+
+# Hmm, probably should have put this in the Bullet... oh well.
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("damageHitbox"):
-		area.get_path()
-		print(area.get_path())
+		var target = get_node(area.get_parent().get_path())
+		target.windBulletHit = true
+		target.windBulletFirer = player

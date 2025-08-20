@@ -23,7 +23,7 @@ var hurtTimer = 0
 var bufferTimer = 0
 var firing = false
 var fireDelayTimer = 0
-var grabbing = false
+var carrying = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -175,7 +175,8 @@ func _physics_process(delta):
 
 # Initialize a hit.
 func _on_hitbox_area_entered(area):
-	if area.is_in_group("damageHitbox"):
+	var target = get_node(area.get_parent().get_path())
+	if area.is_in_group("damageHitbox") && target.DAMAGING == true:
 		hit.emit()
 
 # Get him hurt on hit.
