@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c402ylf00mpqb"]
+[gd_scene load_steps=30 format=3 uid="uid://c402ylf00mpqb"]
 
 [ext_resource type="Script" uid="uid://bpkscdyn8c4dx" path="res://Scripts/Player/player.gd" id="1_4u45w"]
 [ext_resource type="Texture2D" uid="uid://8uhlqneajqnr" path="res://Assets/Images/Klonoa/Klonoa.png" id="1_xwdok"]
@@ -21,6 +21,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [120, 121, 122, 123, 124, 125]
+}
+
+[sub_resource type="Animation" id="Animation_dd0ac"]
+resource_name = "Fall (Grab)"
+length = 0.266669
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333334, 0.0666668, 0.1, 0.133334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [180, 181, 182, 183, 184, 185]
 }
 
 [sub_resource type="Animation" id="Animation_7f10n"]
@@ -91,6 +108,24 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [100, 101, 102, 103]
+}
+
+[sub_resource type="Animation" id="Animation_htcer"]
+resource_name = "Jump (Grab)"
+length = 0.266669
+loop_mode = 1
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666668, 0.133334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [170, 171, 172, 173]
 }
 
 [sub_resource type="Animation" id="Animation_6k02p"]
@@ -181,7 +216,21 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dus4b"]
 resource_name = "Stand (Grab)"
+length = 0.66667
+loop_mode = 1
 step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333334, 0.500001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [150, 151, 152, 153]
+}
 
 [sub_resource type="Animation" id="Animation_rm2sq"]
 resource_name = "Walk"
@@ -280,15 +329,31 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dwebq"]
 resource_name = "Walk (Grab)"
+length = 0.533336
+loop_mode = 1
 step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666668, 0.133334, 0.2, 0.266667, 0.333334, 0.400001, 0.466668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [160, 161, 162, 163, 164, 165, 166, 167]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0y7f"]
 _data = {
 &"Fall": SubResource("Animation_q2nwk"),
+&"Fall (Grab)": SubResource("Animation_dd0ac"),
 &"Fire": SubResource("Animation_7f10n"),
 &"Float": SubResource("Animation_v1xy0"),
 &"Hurt": SubResource("Animation_ejydr"),
 &"Jump": SubResource("Animation_lc1j3"),
+&"Jump (Grab)": SubResource("Animation_htcer"),
 &"Land": SubResource("Animation_6k02p"),
 &"RESET": SubResource("Animation_sefyh"),
 &"Stand": SubResource("Animation_pmlye"),
@@ -355,6 +420,6 @@ shape = SubResource("RectangleShape2D_ejydr")
 [node name="WindBulletSpawn" type="Marker2D" parent="."]
 position = Vector2(12, -16)
 
-[connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="finished" from="Sounds/Float" to="." method="_on_float_sound_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]

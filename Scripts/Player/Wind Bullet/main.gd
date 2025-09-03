@@ -43,3 +43,4 @@ func _on_hitbox_area_entered(area):
 		var target = get_node(area.get_parent().get_path())
 		target.windBulletHit = true
 		target.windBulletFirer = player
+		$Bullet.queue_free()

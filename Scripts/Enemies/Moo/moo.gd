@@ -22,7 +22,9 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.y = 0
 		global_position.x = windBulletFirer.global_position.x
-		global_position.y = windBulletFirer.global_position.y
+		global_position.y = windBulletFirer.global_position.y - 24
+		windBulletFirer.carrying = true
+		windBulletFirer.carryTarget = get_node(".")
 	else:
 		DAMAGING = true
 		velocity.x = SPEED * direction
@@ -38,5 +40,6 @@ func _physics_process(delta):
 	# doesn't wanna work in the enemy script, only in this script!!! Yayy
 	if windBulletHit == true && GRABBABLE == true:
 		inflated = true
+		windBulletHit = false
 	
 	move_and_slide()

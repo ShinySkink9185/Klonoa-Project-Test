@@ -12,8 +12,9 @@ var checkFree2 = false
 @export var value: int = 1
 
 # Called when the player hits the collectible.
-func _on_body_entered(_body):
-	if collected == false:
+# TODO: Replace this with an area instead of a body.
+func _on_body_entered(body):
+	if collected == false and body is Player:
 		collected = true
 		stage_manager.getDreamStones(value)
 		animation.play("Collected")

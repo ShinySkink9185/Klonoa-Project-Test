@@ -95,7 +95,7 @@ libraries = {
 }
 autoplay = "Walk"
 
-[node name="CollisionBox" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="." groups=["playerCollisionBox"]]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_10ytl")
 

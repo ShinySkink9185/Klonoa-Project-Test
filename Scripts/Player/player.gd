@@ -1,6 +1,5 @@
 extends CharacterBody2D
 class_name Player
-signal hit
 
 var stage_manager = load("res://Scripts/Stage Manager/stage_manager.gd")
 
@@ -18,12 +17,14 @@ const FLOAT_VELOCITY = 60.000
 var floatingTimer = 0
 var floating = false
 var hasFloated = false
+var hittingDamage = false
 var isHurt = false
 var hurtTimer = 0
 var bufferTimer = 0
 var firing = false
 var fireDelayTimer = 0
 var carrying = false
+var carryTarget = null
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -36,13 +37,14 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	
 	# Floating thinker.
-	if velocity.y >= 0 and not is_on_floor() and hasFloated == false and Input.is_action_pressed("jump"):
+	if velocity.y >= 0 and not is_on_floor() and hasFloated == false and Input.is_action_pressed("jump") and carrying == false:
 		hasFloated = true
 		floating = true
 		$Sounds/Float.play()
 	
 	# Floating.
 	if floating == true and Input.is_action_pressed("jump") and floatingTimer < 1.133 and not is_on_floor():
+		# 3 stages: descending, stability, and ascending.
 		if floatingTimer < 0.3:
 			floatingTimer += delta
 			velocity.y = FLOAT_VELOCITY
@@ -59,9 +61,14 @@ func _physics_process(delta):
 		floatingTimer = 0
 		$Sounds/Float.stop()
 		
-	# Firing the Wind Bullet
+	# Firing Actions
 	if Input.is_action_just_pressed("fire") and isHurt == false:
-		if firing == false:
+		if carrying == true:
+			carrying = false
+			carryTarget.inflated = false
+			carryTarget = null
+		# Firing the Wind Bullet
+		elif firing == false:
 			firing = true
 			var windBullet = windBulletScene.instantiate()
 			# Pass the player to the Wind Bullet
@@ -122,9 +129,17 @@ func _physics_process(delta):
 		hurtTimer = 0
 		hasFloated = false
 		
+	# Get him hurt on hit.
+	if isHurt == false and bufferTimer <= 0 and hittingDamage == true:
+		isHurt = true
+		bufferTimer = 1
+		stage_manager.adjustHealth(-1)
+		$Sounds/Voice/Hurt.play()
+		
 	# Buffer frames
 	if bufferTimer > 0:
 		var bufferTimerBlinkReference = bufferTimer
+		# Find out what frame cycle we're on.
 		while bufferTimerBlinkReference >= 0.0667:
 			bufferTimerBlinkReference -= 0.0667
 		if bufferTimerBlinkReference >= 0.0334:
@@ -136,6 +151,15 @@ func _physics_process(delta):
 		sprite.show()
 	
 	# Animations!
+	# Here, we define a carryCheck for animations so we don't have to check
+	# for each individual animation on whether or not Klonoa is carrying
+	# something.
+	var carryCheck
+	if carrying == true:
+		carryCheck = " (Grab)"
+	else:
+		carryCheck = ""
+	
 	if isHurt == true:
 		animation.play("Hurt")
 	# TODO: Figure out how to make the below animation be interrupted
@@ -145,31 +169,34 @@ func _physics_process(delta):
 	elif is_on_floor():
 		hasFloated = false
 		if direction == 0:
-			if animation.current_animation == "Fall":
+			if animation.current_animation == "Fall" or animation.current_animation == "Fall (Grab)":
 				animation.play("Land")
 			elif animation.current_animation != "Land":
-				if Input.is_action_pressed("moveDown") == true and Input.is_action_pressed("moveUp") == false:
+				if Input.is_action_pressed("moveDown") == true and Input.is_action_pressed("moveUp") == false and carrying == false:
 					animation.play("Walk (Front)")
-				elif Input.is_action_pressed("moveUp") == true and Input.is_action_pressed("moveDown") == false:
+				elif Input.is_action_pressed("moveUp") == true and Input.is_action_pressed("moveDown") == false and carrying == false:
 					animation.play("Walk (Back)")
 				elif animation.current_animation == "Walk (Front)" or animation.current_animation == "Stand (Front)":
 					animation.play("Stand (Front)")
 				elif animation.current_animation == "Walk (Back)" or animation.current_animation == "Stand (Back)":
 					animation.play("Stand (Back)")
 				else:
-					animation.play("Stand")
+					animation.play("Stand" + carryCheck)
 		else:
-			animation.play("Walk")
+			animation.play("Walk" + carryCheck)
 	elif floating == true:
 		animation.play("Float")
 	elif velocity.y < 0:
-		animation.play("Jump")
+		animation.play("Jump" + carryCheck)
 	else:
-		if animation.current_animation_position >= 0.4:
+		if carrying == true and animation.current_animation_position >= 0.2666:
+			animation.play("Fall (Grab)")
+			animation.seek(0.1333)
+		elif animation.current_animation_position >= 0.4:
 			animation.play("Fall")
 			animation.seek(0.2667)
 		else:
-			animation.play("Fall")
+			animation.play("Fall" + carryCheck)
 	
 	move_and_slide()
 
@@ -177,15 +204,13 @@ func _physics_process(delta):
 func _on_hitbox_area_entered(area):
 	var target = get_node(area.get_parent().get_path())
 	if area.is_in_group("damageHitbox") && target.DAMAGING == true:
-		hit.emit()
+		hittingDamage = true
 
-# Get him hurt on hit.
-func _on_hit():
-	if isHurt == false && bufferTimer <= 0:
-		isHurt = true
-		bufferTimer = 1
-		stage_manager.adjustHealth(-1)
-		$Sounds/Voice/Hurt.play()
+# De-initialize a hit if the damaging factor has exited.
+func _on_hitbox_area_exited(area):
+	var target = get_node(area.get_parent().get_path())
+	if area.is_in_group("damageHitbox") && target.DAMAGING == true:
+		hittingDamage = false
 
 # Loop the Floating sound whenever it finishes
 # Because of how this function works, it won't
