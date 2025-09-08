@@ -80,6 +80,7 @@ size = Vector2(2, 20)
 collision_layer = 2
 script = ExtResource("1_ga75c")
 SPEED = 30.0
+THROWSPEED = 180.0
 metadata/_custom_type_script = "uid://bf17arjbhumlf"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

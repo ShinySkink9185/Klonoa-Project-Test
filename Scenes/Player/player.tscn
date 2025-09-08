@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://c402ylf00mpqb"]
+[gd_scene load_steps=34 format=3 uid="uid://c402ylf00mpqb"]
 
 [ext_resource type="Script" uid="uid://bpkscdyn8c4dx" path="res://Scripts/Player/player.gd" id="1_4u45w"]
 [ext_resource type="Texture2D" uid="uid://8uhlqneajqnr" path="res://Assets/Images/Klonoa/Klonoa.png" id="1_xwdok"]
 [ext_resource type="AudioStream" uid="uid://bntvg8crtnx0k" path="res://Assets/Sounds/Voices/Klonoa/Hurt.wav" id="3_ea7v2"]
 [ext_resource type="AudioStream" uid="uid://bwrj05ntntfnt" path="res://Assets/Sounds/Klonoa/Jump.wav" id="3_ejydr"]
+[ext_resource type="AudioStream" uid="uid://c835v1roejx2u" path="res://Assets/Sounds/Voices/Klonoa/Wahoo.wav" id="4_dd0ac"]
 [ext_resource type="AudioStream" uid="uid://biha05tqrn0q2" path="res://Assets/Sounds/Klonoa/Float.wav" id="5_htcer"]
 
 [sub_resource type="Animation" id="Animation_q2nwk"]
@@ -75,6 +76,10 @@ tracks/0/keys = {
 "values": [110, 111, 112, 113]
 }
 
+[sub_resource type="Animation" id="Animation_gk6dx"]
+resource_name = "Game Over"
+step = 0.0166667
+
 [sub_resource type="Animation" id="Animation_ejydr"]
 resource_name = "Hurt"
 length = 0.001
@@ -126,6 +131,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [170, 171, 172, 173]
+}
+
+[sub_resource type="Animation" id="Animation_0u5uq"]
+resource_name = "Kick-Jump"
+length = 0.233335
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0500001, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [190, 191, 192, 193]
 }
 
 [sub_resource type="Animation" id="Animation_6k02p"]
@@ -230,6 +252,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [150, 151, 152, 153]
+}
+
+[sub_resource type="Animation" id="Animation_jlvik"]
+resource_name = "Throw"
+length = 0.366669
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666668, 0.166667, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [200, 201, 202, 203]
 }
 
 [sub_resource type="Animation" id="Animation_rm2sq"]
@@ -351,15 +390,18 @@ _data = {
 &"Fall (Grab)": SubResource("Animation_dd0ac"),
 &"Fire": SubResource("Animation_7f10n"),
 &"Float": SubResource("Animation_v1xy0"),
+&"Game Over": SubResource("Animation_gk6dx"),
 &"Hurt": SubResource("Animation_ejydr"),
 &"Jump": SubResource("Animation_lc1j3"),
 &"Jump (Grab)": SubResource("Animation_htcer"),
+&"Kick-Jump": SubResource("Animation_0u5uq"),
 &"Land": SubResource("Animation_6k02p"),
 &"RESET": SubResource("Animation_sefyh"),
 &"Stand": SubResource("Animation_pmlye"),
 &"Stand (Back)": SubResource("Animation_ymltu"),
 &"Stand (Front)": SubResource("Animation_r4nux"),
 &"Stand (Grab)": SubResource("Animation_dus4b"),
+&"Throw": SubResource("Animation_jlvik"),
 &"Wait 1": SubResource("Animation_rm2sq"),
 &"Wait 2": SubResource("Animation_v8783"),
 &"Wait 3": SubResource("Animation_a3bkf"),
@@ -405,6 +447,10 @@ shape = SubResource("RectangleShape2D_t60np")
 stream = ExtResource("3_ea7v2")
 volume_db = 13.0
 
+[node name="Wahoo" type="AudioStreamPlayer" parent="Sounds/Voice"]
+stream = ExtResource("4_dd0ac")
+volume_db = 13.0
+
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("3_ejydr")
 
@@ -421,5 +467,3 @@ shape = SubResource("RectangleShape2D_ejydr")
 position = Vector2(12, -16)
 
 [connection signal="finished" from="Sounds/Float" to="." method="_on_float_sound_finished"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]

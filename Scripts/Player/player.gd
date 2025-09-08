@@ -7,6 +7,7 @@ var stage_manager = load("res://Scripts/Stage Manager/stage_manager.gd")
 @export var SPEED = 90.000
 @export var FLOATING_SPEED = 30.000
 @export var JUMP_VELOCITY = -240.0
+@export var KICKJUMP_VELOCITY = -300.0
 const FLOAT_VELOCITY = 60.000
 
 @onready var sprite = $Sprite2D
@@ -25,70 +26,14 @@ var firing = false
 var fireDelayTimer = 0
 var carrying = false
 var carryTarget = null
+var throwTimer = 0
+var kicking = false
+var kickDelayTimer = 0
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor() and floating == false:
 		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		$Sounds/Jump.play()
-		velocity.y = JUMP_VELOCITY
-	
-	# Floating thinker.
-	if velocity.y >= 0 and not is_on_floor() and hasFloated == false and Input.is_action_pressed("jump") and carrying == false:
-		hasFloated = true
-		floating = true
-		$Sounds/Float.play()
-	
-	# Floating.
-	if floating == true and Input.is_action_pressed("jump") and floatingTimer < 1.133 and not is_on_floor():
-		# 3 stages: descending, stability, and ascending.
-		if floatingTimer < 0.3:
-			floatingTimer += delta
-			velocity.y = FLOAT_VELOCITY
-		elif floatingTimer < 0.833:
-			floatingTimer += delta
-			velocity.y = 0
-		else:
-			floatingTimer += delta
-			velocity.y = -FLOAT_VELOCITY
-	else:
-		if floating == true:
-			velocity.y = 0
-		floating = false
-		floatingTimer = 0
-		$Sounds/Float.stop()
-		
-	# Firing Actions
-	if Input.is_action_just_pressed("fire") and isHurt == false:
-		if carrying == true:
-			carrying = false
-			carryTarget.inflated = false
-			carryTarget = null
-		# Firing the Wind Bullet
-		elif firing == false:
-			firing = true
-			var windBullet = windBulletScene.instantiate()
-			# Pass the player to the Wind Bullet
-			# Self-note: use a method like this instead of getting a node's parent!
-			windBullet.player = self
-			owner.add_child(windBullet)
-			windBullet.transform = $WindBulletSpawn.global_transform
-		if floating == true:
-			velocity.y = 0
-			floating = false
-			floatingTimer = 0
-			$Sounds/Float.stop()
-	
-	if firing == true:
-		if fireDelayTimer >= 0.3667:
-			firing = false
-		else:
-			fireDelayTimer += delta
-	else:
-		fireDelayTimer = 0
 		
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("moveLeft", "moveRight")
@@ -98,7 +43,9 @@ func _physics_process(delta):
 	elif direction < -1:
 		direction = -1
 	
-	if direction && isHurt == false && not (is_on_floor() && firing == true):
+	# Klonoa moves according to the direction.
+	# TODO: maybe have a stick deadzone?
+	if direction and isHurt == false and not (is_on_floor() && firing == true) and kicking == false:
 		if floating == true:
 			velocity.x = direction * FLOATING_SPEED
 		else:
@@ -113,6 +60,119 @@ func _physics_process(delta):
 	elif direction < 0 && isHurt == false:
 		sprite.flip_h = true
 		$WindBulletSpawn.set_position(Vector2(-12, -16))
+
+	# Handle jump.
+	if Input.is_action_just_pressed("jump"):
+		# A regular jump.
+		if is_on_floor():
+			$Sounds/Jump.play()
+			velocity.y = JUMP_VELOCITY
+		# A kick-jump!
+		elif carrying == true:
+			carrying = false
+			carryTarget.inflated = false
+			carryTarget.kicked = true
+			carryTarget = null
+			kicking = true
+	
+	# Handle kick-jumping!
+	if kicking == true:
+		const KICKPREP_VELOCITY = 60
+		# 4 stages: descending, stability, ascending, and the launch!
+		if kickDelayTimer < 0.05:
+			kickDelayTimer += delta
+			velocity = Vector2(0, KICKPREP_VELOCITY)
+		elif kickDelayTimer < 0.1333:
+			kickDelayTimer += delta
+			velocity = Vector2(0, 0)
+		elif kickDelayTimer < 0.1833:
+			kickDelayTimer += delta
+			velocity = Vector2(0, -KICKPREP_VELOCITY)
+		else:
+			kicking = false
+			kickDelayTimer = 0
+			velocity.y = KICKJUMP_VELOCITY
+			$Sounds/Voice/Wahoo.play()
+			
+	
+	# Floating thinker.
+	if velocity.y >= 0 and not is_on_floor() and hasFloated == false and Input.is_action_pressed("jump") and carrying == false and kicking == false:
+		hasFloated = true
+		floating = true
+		$Sounds/Float.play()
+	
+	# Floating.
+	if floating == true and Input.is_action_pressed("jump") and floatingTimer < 1.133 and not is_on_floor():
+		# 3 stages: descending, stability, and ascending.
+		if floatingTimer < 0.3:
+			velocity.y = FLOAT_VELOCITY
+		elif floatingTimer < 0.833:
+			velocity.y = 0
+		else:
+			velocity.y = -FLOAT_VELOCITY
+		floatingTimer += delta
+	else:
+		if floating == true:
+			velocity.y = 0
+		floating = false
+		floatingTimer = 0
+		$Sounds/Float.stop()
+		
+	# Firing Actions
+	if Input.is_action_just_pressed("fire") and isHurt == false and kicking == false:
+		# Throwing an Item
+		if carrying == true:
+			carrying = false
+			carryTarget.inflated = false
+			carryTarget.global_position.y += 22
+			if sprite.flip_h == true:
+				carryTarget.direction = -1
+			else:
+				carryTarget.direction = 1
+			carryTarget.thrown = true
+			carryTarget = null
+			throwTimer = 0.3666
+		# Firing the Wind Bullet
+		elif firing == false:
+			firing = true
+			var windBullet = windBulletScene.instantiate()
+			# Pass the player to the Wind Bullet
+			# Self-note: use a method like this instead of getting a node's parent!
+			windBullet.player = self
+			owner.add_child(windBullet)
+			windBullet.transform = $WindBulletSpawn.global_transform
+		# Stopping floating
+		if floating == true:
+			velocity.y = 0
+			floating = false
+			floatingTimer = 0
+			$Sounds/Float.stop()
+	
+	# Thinkers for firing and throwing timers
+	if firing == true:
+		if fireDelayTimer >= 0.3667:
+			firing = false
+		else:
+			fireDelayTimer += delta
+	else:
+		fireDelayTimer = 0
+	
+	if throwTimer <= 0:
+		throwTimer = 0
+	else:
+		throwTimer -= delta
+	
+	# Hit detection
+	# Check if there is actually a hitbox colliding with Klonoa, if the hitbox
+	# is marked as "can damage", and if it actually does damage.
+	if $Hitbox.get_overlapping_areas():
+		for area in $Hitbox.get_overlapping_areas():
+			if area.is_in_group("damageHitbox") && area.get_parent().DAMAGING == true:
+				hittingDamage = true
+			else:
+				hittingDamage = false
+	else:
+		hittingDamage = false
 	
 	# Hurt knockback
 	if isHurt == true && hurtTimer < 0.2667:
@@ -162,10 +222,14 @@ func _physics_process(delta):
 	
 	if isHurt == true:
 		animation.play("Hurt")
-	# TODO: Figure out how to make the below animation be interrupted
+	# TODO: Figure out how to make the below 2 animations be interrupted
 	# by other animations
+	elif kicking == true:
+		animation.play("Kick-Jump")
 	elif firing == true:
 		animation.play("Fire")
+	elif throwTimer != 0:
+		animation.play("Throw")
 	elif is_on_floor():
 		hasFloated = false
 		if direction == 0:
@@ -199,18 +263,6 @@ func _physics_process(delta):
 			animation.play("Fall" + carryCheck)
 	
 	move_and_slide()
-
-# Initialize a hit.
-func _on_hitbox_area_entered(area):
-	var target = get_node(area.get_parent().get_path())
-	if area.is_in_group("damageHitbox") && target.DAMAGING == true:
-		hittingDamage = true
-
-# De-initialize a hit if the damaging factor has exited.
-func _on_hitbox_area_exited(area):
-	var target = get_node(area.get_parent().get_path())
-	if area.is_in_group("damageHitbox") && target.DAMAGING == true:
-		hittingDamage = false
 
 # Loop the Floating sound whenever it finishes
 # Because of how this function works, it won't
