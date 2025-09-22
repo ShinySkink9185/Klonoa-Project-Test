@@ -21,6 +21,9 @@ var hasFloated = false
 var hittingDamage = false
 var isHurt = false
 var hurtTimer = 0
+var isDead = false
+var deadTimer = 0
+var playedDeathFadeout = false
 var bufferTimer = 0
 var firing = false
 var fireDelayTimer = 0
@@ -45,7 +48,7 @@ func _physics_process(delta):
 	
 	# Klonoa moves according to the direction.
 	# TODO: maybe have a stick deadzone?
-	if direction and isHurt == false and not (is_on_floor() && firing == true) and kicking == false:
+	if direction and isHurt == false and isDead == false and not (is_on_floor() && firing == true) and kicking == false:
 		if floating == true:
 			velocity.x = direction * FLOATING_SPEED
 		else:
@@ -54,10 +57,10 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	# Handle direction facing.
-	if direction > 0 && isHurt == false:
+	if direction > 0 and isHurt == false and isDead == false:
 		sprite.flip_h = false
 		$WindBulletSpawn.set_position(Vector2(12, -16))
-	elif direction < 0 && isHurt == false:
+	elif direction < 0 and isHurt == false and isDead == false:
 		sprite.flip_h = true
 		$WindBulletSpawn.set_position(Vector2(-12, -16))
 
@@ -189,12 +192,35 @@ func _physics_process(delta):
 		hurtTimer = 0
 		hasFloated = false
 		
+	# Death knockback
+	if isDead == true:
+		floating = false
+		floatingTimer = 0
+		if deadTimer < 0.2667:
+			velocity = Vector2(0, -60)
+			deadTimer += delta
+		elif deadTimer < 0.5333:
+			velocity = Vector2(0, 60)
+			deadTimer += delta
+		else:
+			# TODO: Figure out how to call the stage's Screen Handler here
+			var currentStage = get_tree().current_scene
+			if currentStage.has_node("ScreenHandler") and playedDeathFadeout == false:
+				var screenHandler = currentStage.get_node("ScreenHandler")
+				screenHandler.play("Death Fadeout")
+				playedDeathFadeout = true
+			deadTimer += delta
+		
 	# Get him hurt on hit.
-	if isHurt == false and bufferTimer <= 0 and hittingDamage == true:
-		isHurt = true
+	if isHurt == false and isDead == false and bufferTimer <= 0 and hittingDamage == true:
 		bufferTimer = 1
 		stage_manager.adjustHealth(-1)
-		$Sounds/Voice/Hurt.play()
+		if stage_manager.health <= 0:
+			$Sounds/Voice/Death.play()
+			isDead = true
+		else:
+			$Sounds/Voice/Hurt.play()
+			isHurt = true
 		
 	# Buffer frames
 	if bufferTimer > 0:
@@ -220,7 +246,7 @@ func _physics_process(delta):
 	else:
 		carryCheck = ""
 	
-	if isHurt == true:
+	if isHurt == true or isDead == true:
 		animation.play("Hurt")
 	# TODO: Figure out how to make the below 2 animations be interrupted
 	# by other animations
