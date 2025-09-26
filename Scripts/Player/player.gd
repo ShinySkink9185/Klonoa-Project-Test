@@ -203,7 +203,6 @@ func _physics_process(delta):
 			velocity = Vector2(0, 60)
 			deadTimer += delta
 		else:
-			# TODO: Figure out how to call the stage's Screen Handler here
 			var currentStage = get_tree().current_scene
 			if currentStage.has_node("ScreenHandler") and playedDeathFadeout == false:
 				var screenHandler = currentStage.get_node("ScreenHandler")

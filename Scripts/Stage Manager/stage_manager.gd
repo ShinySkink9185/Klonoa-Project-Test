@@ -35,3 +35,11 @@ func _physics_process(_delta):
 		## game_manager.lives -= 1
 		pass
 		# Get rid of the reload temporarily for something in the player.
+		
+func deathLifeSubtract():
+	game_manager.lives -= 1
+
+func deathReload():
+	get_tree().reload_current_scene()
+	health = 3
+	dreamStones = 0
