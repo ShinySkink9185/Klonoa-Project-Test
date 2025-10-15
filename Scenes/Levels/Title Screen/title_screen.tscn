@@ -1,3 +1,224 @@
-[gd_scene format=3 uid="uid://jwaw0q1o8xe4"]
+[gd_scene load_steps=11 format=3 uid="uid://jwaw0q1o8xe4"]
+
+[ext_resource type="Texture2D" uid="uid://cdxjb5neoy1p0" path="res://Assets/Images/HUD/Title Screen/Logos.png" id="1_ypyi8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypyi8"]
+atlas = ExtResource("1_ypyi8")
+region = Rect2(0, 0, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkqem"]
+atlas = ExtResource("1_ypyi8")
+region = Rect2(0, 48, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kslbh"]
+atlas = ExtResource("1_ypyi8")
+region = Rect2(0, 0, 160, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sayln"]
+atlas = ExtResource("1_ypyi8")
+region = Rect2(0, 32, 103, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkbck"]
+atlas = ExtResource("1_ypyi8")
+region = Rect2(0, 40, 127, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03obe"]
+
+[sub_resource type="Animation" id="Animation_kslbh"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ypyi8"]
+resource_name = "Title Process"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/White Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/Black Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD/Black Fadeout:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.5, 4, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD/Namco Screen/Namco Logo:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD/Namco Screen/Disclaimer 1:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HUD/Namco Screen/Disclaimer 2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tkqem"]
+_data = {
+&"RESET": SubResource("Animation_kslbh"),
+&"Title Process": SubResource("Animation_ypyi8")
+}
 
 [node name="Title Screen" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Black Background" type="TextureRect" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ypyi8")
+stretch_mode = 1
+
+[node name="White Background" type="TextureRect" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_tkqem")
+stretch_mode = 1
+
+[node name="Namco Screen" type="Node" parent="HUD"]
+
+[node name="Namco Logo" type="TextureRect" parent="HUD/Namco Screen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -16.0
+offset_right = 85.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_kslbh")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Disclaimer 1" type="TextureRect" parent="HUD/Namco Screen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -19.5
+offset_right = 51.5
+offset_bottom = -14.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_sayln")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Disclaimer 2" type="TextureRect" parent="HUD/Namco Screen"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.5
+offset_top = -30.0
+offset_right = 63.5
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_mkbck")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Black Fadeout" type="TextureRect" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ypyi8")
+stretch_mode = 1
+
+[node name="Klonoa Works Logo" type="TextureRect" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -16.0
+offset_right = 80.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_03obe")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tkqem")
+}
+autoplay = "Title Process"
