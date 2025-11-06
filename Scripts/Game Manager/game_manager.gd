@@ -6,4 +6,4 @@ extends Node
 static var lives = 3
 
 func _ready():
-	get_tree().change_scene_to_file("res://Scenes/Levels/Green Hill Zone 1 GG/green_hill_zone_1_gg.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/Title Screen/title_screen.tscn")
