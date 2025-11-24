@@ -31,6 +31,12 @@ damageHitbox="This type of hitbox can hurt Klonoa."
 windBulletHitbox="Hitbox for the Wind Bullet."
 playerHitbox="Klonoa's hitbox."
 
+[importer_defaults]
+
+animation_library={
+&"animation/fps": 60.0
+}
+
 [input]
 
 moveRight={
@@ -104,10 +110,6 @@ pause={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
-
-[physics]
-
-2d/default_gravity=576.0
 
 [rendering]
 

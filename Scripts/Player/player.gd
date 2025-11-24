@@ -6,8 +6,9 @@ var stage_manager = load("res://Scripts/Stage Manager/stage_manager.gd")
 # These may change depending on the state Klonoa is in (surfboard, e.t.c.)
 @export var SPEED = 90.000
 @export var FLOATING_SPEED = 30.000
-@export var JUMP_VELOCITY = -240.0
-@export var KICKJUMP_VELOCITY = -300.0
+@export var JUMP_VELOCITY = -287.0
+@export var KICKJUMP_VELOCITY = -326.667
+@export var WIND_RESISTANCE = 180.00
 const FLOAT_VELOCITY = 60.000
 
 @onready var sprite = $Sprite2D
@@ -32,6 +33,7 @@ var carryTarget = null
 var throwTimer = 0
 var kicking = false
 var kickDelayTimer = 0
+var preventJumping = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -45,6 +47,10 @@ func _physics_process(delta):
 		direction = 1
 	elif direction < -1:
 		direction = -1
+		
+	# Prevent Klonoa from falling more due to wind resistance.
+	if velocity.y > WIND_RESISTANCE:
+		velocity.y = WIND_RESISTANCE
 	
 	# Klonoa moves according to the direction.
 	# TODO: maybe have a stick deadzone?
@@ -65,7 +71,7 @@ func _physics_process(delta):
 		$WindBulletSpawn.set_position(Vector2(-12, -16))
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") && isHurt == false && isDead == false && preventJumping == false:
 		# A regular jump.
 		if is_on_floor():
 			$Sounds/Jump.play()
@@ -77,6 +83,9 @@ func _physics_process(delta):
 			carryTarget.kicked = true
 			carryTarget = null
 			kicking = true
+	
+	# Nullify the effects of preventJumping caused by other objects.
+	preventJumping = false
 	
 	# Handle kick-jumping!
 	if kicking == true:

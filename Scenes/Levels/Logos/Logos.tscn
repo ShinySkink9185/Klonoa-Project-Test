@@ -1,7 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://jwaw0q1o8xe4"]
+[gd_scene load_steps=23 format=3 uid="uid://jwaw0q1o8xe4"]
 
 [ext_resource type="Script" uid="uid://dcn17e72pj7mw" path="res://Scripts/Menus/title_screen.gd" id="1_kslbh"]
 [ext_resource type="Texture2D" uid="uid://cdxjb5neoy1p0" path="res://Assets/Images/HUD/Title Screen/Logos.png" id="1_ypyi8"]
+[ext_resource type="AudioStream" uid="uid://did7ek7ppvjkc" path="res://Assets/Sounds/Levels/Logos/namco.wav" id="3_k4ybl"]
+[ext_resource type="AudioStream" uid="uid://c835v1roejx2u" path="res://Assets/Sounds/Voices/Klonoa/Wahoo.wav" id="4_in0c8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypyi8"]
 atlas = ExtResource("1_ypyi8")
@@ -412,6 +414,30 @@ tracks/28/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Sounds/Namco:playing")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Sounds/Wahoo:playing")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_ypyi8"]
@@ -874,6 +900,30 @@ tracks/37/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("Sounds/Namco:playing")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("Sounds/Wahoo:playing")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tkqem"]
 _data = {
@@ -899,7 +949,6 @@ texture = SubResource("AtlasTexture_ypyi8")
 stretch_mode = 1
 
 [node name="White Background" type="TextureRect" parent="HUD"]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -913,7 +962,7 @@ stretch_mode = 1
 [node name="S Logo" type="Node" parent="HUD"]
 
 [node name="Complete" type="TextureRect" parent="HUD/S Logo"]
-modulate = Color(1, 1, 1, 0.50980395)
+modulate = Color(1, 1, 1, -3.7561932)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -928,6 +977,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_phrqn")
 
 [node name="Part 1" type="TextureRect" parent="HUD/S Logo"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1045,7 +1095,7 @@ texture = SubResource("AtlasTexture_jvqb8")
 metadata/_edit_use_anchors_ = true
 
 [node name="Slash 5" type="TextureRect" parent="HUD/S Logo"]
-anchors_preset = -1
+anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -1074,7 +1124,7 @@ texture = SubResource("AtlasTexture_txmn4")
 metadata/_edit_use_anchors_ = true
 
 [node name="Slash 6" type="TextureRect" parent="HUD/S Logo"]
-anchors_preset = -1
+anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = -16.0
@@ -1139,7 +1189,6 @@ expand_mode = 2
 stretch_mode = 3
 
 [node name="Klonoa Works Logo" type="TextureRect" parent="HUD"]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1156,6 +1205,7 @@ expand_mode = 2
 stretch_mode = 3
 
 [node name="Black Fadeout" type="TextureRect" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1184,5 +1234,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_tkqem")
 }
 autoplay = "Title Process"
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Namco" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_k4ybl")
+
+[node name="Wahoo" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_in0c8")
+volume_db = 13.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
