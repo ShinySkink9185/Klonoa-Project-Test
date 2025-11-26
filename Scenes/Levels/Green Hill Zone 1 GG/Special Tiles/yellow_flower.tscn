@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1m5gqetklr6g"]
 
-[ext_resource type="Texture2D" uid="uid://bf0k86p2lbp5c" path="res://Assets/Images/Tilesets/Green Hill Zone Act 1 (Sonic 1 GG)/s1gg_ghz1.png" id="1_lcbty"]
+[ext_resource type="Texture2D" uid="uid://bf0k86p2lbp5c" path="res://Assets/Images/Levels/Green Hill Zone Act 1 (Sonic 1 GG)/Tileset.png" id="1_lcbty"]
 
 [sub_resource type="Animation" id="Animation_6hpue"]
 length = 0.001

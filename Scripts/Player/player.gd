@@ -131,7 +131,7 @@ func _physics_process(delta):
 		$Sounds/Float.stop()
 		
 	# Firing Actions
-	if Input.is_action_just_pressed("fire") and isHurt == false and kicking == false:
+	if Input.is_action_just_pressed("fire") and isHurt == false and kicking == false and isDead == false:
 		# Throwing an Item
 		if carrying == true:
 			carrying = false

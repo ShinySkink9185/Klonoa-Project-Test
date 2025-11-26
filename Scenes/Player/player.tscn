@@ -421,6 +421,7 @@ size = Vector2(18, 20)
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 floor_snap_length = 1.6
+platform_on_leave = 2
 script = ExtResource("1_4u45w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

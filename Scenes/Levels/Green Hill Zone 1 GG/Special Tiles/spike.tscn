@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6r46bg62mbnd"]
 
-[ext_resource type="Texture2D" uid="uid://bf0k86p2lbp5c" path="res://Assets/Images/Tilesets/Green Hill Zone Act 1 (Sonic 1 GG)/s1gg_ghz1.png" id="1_31o7j"]
+[ext_resource type="Texture2D" uid="uid://bf0k86p2lbp5c" path="res://Assets/Images/Levels/Green Hill Zone Act 1 (Sonic 1 GG)/Tileset.png" id="1_31o7j"]
 [ext_resource type="Script" uid="uid://d1xlwjaiyyqq8" path="res://Scripts/Levels/Green Hill Zone 1 GG/Special Tiles/spike.gd" id="1_em1eq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_em1eq"]
