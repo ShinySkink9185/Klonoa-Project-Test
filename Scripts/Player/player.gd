@@ -13,6 +13,7 @@ const FLOAT_VELOCITY = 60.000
 
 @onready var sprite = $Sprite2D
 @onready var animation = $AnimationPlayer
+@onready var collisionSensor = $CollisionSensor
 @onready var windBulletScene = load("res://Scenes/Player/Wind Bullet/wind_bullet.tscn")
 
 # All of our timers and checks
@@ -51,6 +52,11 @@ func _physics_process(delta):
 	# Prevent Klonoa from falling more due to wind resistance.
 	if velocity.y > WIND_RESISTANCE:
 		velocity.y = WIND_RESISTANCE
+	
+	# Collision sensor to prevent Klonoa from walking in between tiles.
+	if collisionSensor.is_colliding() and collisionSensor.get_collider() is TileMapLayer and is_on_floor():
+		velocity.y = 0
+		global_position.y -= 8
 	
 	# Klonoa moves according to the direction.
 	# TODO: maybe have a stick deadzone?

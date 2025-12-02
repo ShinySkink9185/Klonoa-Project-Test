@@ -15,6 +15,7 @@ func _on_hitbox_body_entered(body):
 	if initiated == false and body is Player:
 		initiated = true
 		animation.play("Spring")
+		body.preventJumping = true
 
 func _physics_process(_delta):
 	# Make whatever is on it change y positions according to wherever the animation is.
@@ -22,6 +23,7 @@ func _physics_process(_delta):
 		for body in $Hitbox.get_overlapping_bodies():
 			body.global_position.y = hitboxShape.global_position.y
 			# Prevent Klonoa from jumping.
+			# TODO: fix Klonoa still being able to jump sometimes.
 			if body is Player:
 				body.preventJumping = true
 

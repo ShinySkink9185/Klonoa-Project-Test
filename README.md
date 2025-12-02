@@ -7,6 +7,9 @@ PROJECT CREDITS:
 ShinySkink9185 (made the game)
 KoBeWi ("Palette swap shader with animation support" Asset)
 
+ASSISTANCE:
+koi
+
 ASSETS TAKEN FROM:
 Klonoa: Empire of Dreams (GBA)
 Ripped by Frario, AzRaezel/Dan, Dark Angel, DogInDaGrass, silverswide

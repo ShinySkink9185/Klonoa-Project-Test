@@ -472,4 +472,8 @@ shape = SubResource("RectangleShape2D_ejydr")
 [node name="WindBulletSpawn" type="Marker2D" parent="."]
 position = Vector2(12, -16)
 
+[node name="CollisionSensor" type="RayCast2D" parent="."]
+position = Vector2(0, -10)
+target_position = Vector2(0, 10)
+
 [connection signal="finished" from="Sounds/Float" to="." method="_on_float_sound_finished"]
