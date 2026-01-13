@@ -4,8 +4,7 @@ extends Path2D
 @onready var animation = $AnimationPlayer
 
 var activated = false
-var initialAnimationLock = false
-var finalAnimationLock = false
+var direction = "up"
 
 func _physics_process(_delta):
 	# It should initially do false.
@@ -19,16 +18,9 @@ func _physics_process(_delta):
 				activated = true
 	
 	# Play animations.
-	if activated == true && initialAnimationLock == false:
+	if activated == true && direction == "up":
 		animation.play("Default", -1, 1)
-		finalAnimationLock = false
-	elif finalAnimationLock == false:
+		direction = "down"
+	elif activated == false && direction == "down":
 		animation.play("Default", -1, -0.5, true)
-		initialAnimationLock = false
-
-# Lock animation so it doesn't loop.
-func _on_animation_player_animation_finished(_anim_name):
-	if activated == true:
-		initialAnimationLock = true
-	else:
-		finalAnimationLock = true
+		direction = "up"

@@ -43,7 +43,3 @@ func deathReload():
 	get_tree().reload_current_scene()
 	health = 3
 	dreamStones = 0
-
-
-func _on_animation_player_animation_finished(anim_name):
-	pass # Replace with function body.

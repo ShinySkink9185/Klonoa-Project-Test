@@ -2,6 +2,10 @@ extends Enemy
 
 @export var HOVERBOARD = false
 
+@onready var rayCast = $GroundRayCast
+
+var justLooked = false
+
 func _physics_process(delta):
 	# Add gravity.
 	if not is_on_floor():
@@ -15,8 +19,10 @@ func _physics_process(delta):
 	else:
 		if direction > 0:
 			sprite.flip_h = false
+			rayCast.position.x = 3
 		elif direction < 0:
 			sprite.flip_h = true
+			rayCast.position.x = -3
 	
 	# Handle movement, both when inflated and as a normal enemy.
 	if inflated == true:
@@ -29,29 +35,55 @@ func _physics_process(delta):
 		velocity = Vector2(THROWSPEED * direction, 0)
 	elif kicked == true:
 		velocity = Vector2(0, THROWSPEED)
+	elif animation.current_animation == "Look":
+		DAMAGING = true
+		velocity.x = 0
 	else:
 		DAMAGING = true
 		velocity.x = SPEED * direction
 	
-	# Animation.
+	# Standard animation.
 	if inflated == true or thrown == true or kicked == true:
 		animation.play("Inflated")
-	else:
+	elif animation.current_animation != "Look":
 		animation.play("Walk")
+		
+	# Turnarounds.
+	if not inflated and not thrown and not kicked:
+		if is_on_wall():
+			direction = -direction
+		elif rayCast.is_colliding() == false and is_on_floor() and justLooked == false:
+			print("the looker")
+			print(animation.current_animation)
+			animation.play("Look")
 	
 	# Wind Bullet hit detection
 	# I would've done this in Enemy but for some reason _physics_process
 	# doesn't wanna work in the enemy script, only in this script!!! Yayy
+	# TODO: Can we have this as a "static" method, or one that is used by the
+	# entire class to fix that issue?
 	if windBulletHit == true && GRABBABLE == true and thrown == false:
 		inflated = true
 		windBulletHit = false
 	
+	# Hacky look check because the raycast position doesn't update in time.
+	if justLooked == true:
+		justLooked = false
+	
 	# Moving depending on if the enemy has been thrown or not.
 	if thrown == true or kicked == true:
 		if move_and_collide(velocity * delta) != null:
+			# Spawn an explosion and nullify the enemy.
 			var pop = popScene.instantiate()
 			owner.add_child(pop)
 			pop.global_transform = global_transform
 			queue_free()
 	else:
 		move_and_slide()
+
+# This turns our lil' guy around if he's done looking.
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Look":
+		direction = -direction
+		animation.play("Walk")
+		justLooked = true
