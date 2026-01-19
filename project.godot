@@ -30,6 +30,7 @@ enabled=PackedStringArray("res://addons/PaletteSwapShader/plugin.cfg")
 damageHitbox="This type of hitbox can hurt Klonoa."
 windBulletHitbox="Hitbox for the Wind Bullet."
 playerHitbox="Klonoa's hitbox."
+projectileHitbox="This type of hitbox can affect different objects and damage enemies."
 
 [importer_defaults]
 

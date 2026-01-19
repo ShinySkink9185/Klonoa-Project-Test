@@ -7,6 +7,15 @@ extends Enemy
 var justTurned = false
 
 func _physics_process(delta):
+	
+	# Check if it's defeated.
+	if defeated == true:
+		# Spawn an explosion and nullify the enemy.
+		var pop = popScene.instantiate()
+		owner.add_child(pop)
+		pop.global_transform = global_transform
+		queue_free()
+	
 	# Add gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -67,12 +76,10 @@ func _physics_process(delta):
 	
 	# Moving depending on if the enemy has been thrown or not.
 	if thrown == true or kicked == true:
+		PROJECTILE = true
+		$Hitbox.add_to_group("projectileHitbox")
 		if move_and_collide(velocity * delta) != null:
-			# Spawn an explosion and nullify the enemy.
-			var pop = popScene.instantiate()
-			owner.add_child(pop)
-			pop.global_transform = global_transform
-			queue_free()
+			defeated = true
 	else:
 		move_and_slide()
 	

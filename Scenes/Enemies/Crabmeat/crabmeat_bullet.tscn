@@ -58,6 +58,7 @@ region_rect = Rect2(0, 24, 16, 8)
 libraries = {
 &"": SubResource("AnimationLibrary_pg0nm")
 }
+autoplay = "Default"
 
 [node name="Hitbox" type="Area2D" parent="." groups=["damageHitbox"]]
 

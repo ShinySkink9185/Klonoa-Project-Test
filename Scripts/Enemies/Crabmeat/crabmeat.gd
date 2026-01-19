@@ -10,7 +10,21 @@ var bulletTime2 = 0
 var hasFired1 = true
 var hasFired2 = true
 
+@onready var hitbox = $Hitbox
+
+# Set the pop scene
+func _ready():
+	popScene = load("res://Scenes/Effects/pop_(sonic_1_gg).tscn")
+
 func _physics_process(delta):
+	
+	# Spawn an explosion and nullify the enemy if defeated.
+	if defeated == true:
+		var pop = popScene.instantiate()
+		owner.add_child(pop)
+		pop.global_position = Vector2(global_position.x, global_position.y - 22)
+		queue_free()
+	
 	# Add gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -41,7 +55,6 @@ func _physics_process(delta):
 		bullet.velocity = Vector2(60, -240)
 		bullet.global_position = $BulletSpawn2.global_position
 		hasFired2 = true
-		
 	
 	move_and_slide()
 
@@ -56,3 +69,8 @@ func _on_animation_player_animation_finished(anim_name):
 		walkingTimer = 400.0/60.0
 		direction = -direction
 		
+# Destroy it!
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("projectileHitbox"):
+		defeated = true
+		area.get_parent().defeated = true
