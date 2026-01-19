@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpkjqwla2ls2l"]
+
+[ext_resource type="Texture2D" uid="uid://dy4sej0acta6l" path="res://Assets/Images/Enemies/Crabmeat/Crabmeat.png" id="1_gw7cf"]
+[ext_resource type="Script" uid="uid://ei5cgrvgyvt2" path="res://Scripts/Enemies/Crabmeat/crabmeat_bullet.gd" id="1_xlkmo"]
+
+[sub_resource type="Animation" id="Animation_xlkmo"]
+resource_name = "Default"
+length = 0.033335
+loop_mode = 1
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.016666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_gd26r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pg0nm"]
+_data = {
+&"Default": SubResource("Animation_xlkmo"),
+&"RESET": SubResource("Animation_gd26r")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlkmo"]
+size = Vector2(4, 4)
+
+[node name="CrabmeatBullet" type="CharacterBody2D"]
+script = ExtResource("1_xlkmo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gw7cf")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 24, 16, 8)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pg0nm")
+}
+
+[node name="Hitbox" type="Area2D" parent="." groups=["damageHitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_xlkmo")

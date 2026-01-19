@@ -4,7 +4,7 @@ extends Enemy
 
 @onready var rayCast = $GroundRayCast
 
-var justLooked = false
+var justTurned = false
 
 func _physics_process(delta):
 	# Add gravity.
@@ -50,11 +50,10 @@ func _physics_process(delta):
 		
 	# Turnarounds.
 	if not inflated and not thrown and not kicked:
-		if is_on_wall():
+		if is_on_wall() and justTurned == false:
 			direction = -direction
-		elif rayCast.is_colliding() == false and is_on_floor() and justLooked == false:
-			print("the looker")
-			print(animation.current_animation)
+			justTurned = true
+		elif rayCast.is_colliding() == false and is_on_floor() and justTurned == false:
 			animation.play("Look")
 	
 	# Wind Bullet hit detection
@@ -66,10 +65,6 @@ func _physics_process(delta):
 		inflated = true
 		windBulletHit = false
 	
-	# Hacky look check because the raycast position doesn't update in time.
-	if justLooked == true:
-		justLooked = false
-	
 	# Moving depending on if the enemy has been thrown or not.
 	if thrown == true or kicked == true:
 		if move_and_collide(velocity * delta) != null:
@@ -80,10 +75,15 @@ func _physics_process(delta):
 			queue_free()
 	else:
 		move_and_slide()
+	
+	# Hacky look check because the raycast position doesn't update in time.
+	# TODO: fix the Moo having a seizure against a wall
+	if justTurned == true and not is_on_wall():
+		justTurned = false
 
 # This turns our lil' guy around if he's done looking.
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Look":
 		direction = -direction
 		animation.play("Walk")
-		justLooked = true
+		justTurned = true

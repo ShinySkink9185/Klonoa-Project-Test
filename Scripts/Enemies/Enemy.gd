@@ -10,6 +10,8 @@ var windBulletFirer
 @export var GRABBABLE = true
 @export var RESPAWN = true
 @export var DAMAGING = true
+# TODO: Having "DAMAGING" as a parameter when we already have a damagingHitbox
+# group is a little redundant. Can't we just... remove damagingHitbox?
 @export var PROJECTILE = false
 
 var inflated = false
