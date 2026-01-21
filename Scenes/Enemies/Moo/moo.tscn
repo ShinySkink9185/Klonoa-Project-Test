@@ -123,4 +123,6 @@ shape = SubResource("RectangleShape2D_5aml2")
 position = Vector2(3, -10)
 target_position = Vector2(0, 20)
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
