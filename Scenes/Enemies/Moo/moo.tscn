@@ -124,5 +124,9 @@ position = Vector2(3, -10)
 target_position = Vector2(0, 20)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -10)
+rect = Rect2(-13, -11, 26, 21)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

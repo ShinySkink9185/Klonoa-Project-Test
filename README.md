@@ -47,6 +47,7 @@ Chuckles_troll
 Chungus Bungus
 Cobaltn't
 CosmicBrie
+Cosmid
 Curedleaves
 Dakkī the RoBo
 Darko/Mlgjohn
@@ -88,6 +89,7 @@ Marie-tsuru/Kriby
 Marilyn
 MarleDrawsStuff
 MasochMoon
+Milk
 MisterDJ
 MrPastin
 Mr. Space
@@ -122,6 +124,7 @@ Sonic Team
 Sonic Team Jr.
 Sonicspeed148
 Spectra
+Spinsei
 SplitsTheOne
 Spoonise
 Starlyn

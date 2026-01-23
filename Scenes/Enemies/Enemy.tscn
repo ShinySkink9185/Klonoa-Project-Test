@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://biahco812v51h"]
 
-[ext_resource type="Script" uid="uid://bf17arjbhumlf" path="res://Scripts/Enemies/enemy.gd" id="1_ga75c"]
+[ext_resource type="Script" uid="uid://bf17arjbhumlf" path="res://Scripts/Enemies/Enemy.gd" id="1_ga75c"]
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2

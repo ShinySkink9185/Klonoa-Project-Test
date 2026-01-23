@@ -68,8 +68,6 @@ func _physics_process(delta):
 	# Wind Bullet hit detection
 	# I would've done this in Enemy but for some reason _physics_process
 	# doesn't wanna work in the enemy script, only in this script!!! Yayy
-	# TODO: Can we have this as a "static" method, or one that is used by the
-	# entire class to fix that issue?
 	if windBulletHit == true && GRABBABLE == true and thrown == false:
 		inflated = true
 		windBulletHit = false
