@@ -7,14 +7,8 @@ extends Enemy
 var justTurned = false
 
 func _physics_process(delta):
-	
-	# Check if it's defeated.
-	if defeated == true:
-		# Spawn an explosion and nullify the enemy.
-		var pop = popScene.instantiate()
-		owner.add_child(pop)
-		pop.global_transform = global_transform
-		queue_free()
+	# Run the subclass's _physics_process
+	super._physics_process(delta)
 	
 	# Add gravity.
 	if not is_on_floor():
@@ -33,23 +27,14 @@ func _physics_process(delta):
 			sprite.flip_h = true
 			rayCast.position.x = -3
 	
-	# Handle movement, both when inflated and as a normal enemy.
-	if inflated == true:
-		DAMAGING = false
-		velocity = Vector2(0,0)
-		global_position = Vector2(windBulletFirer.global_position.x, windBulletFirer.global_position.y - 24)
-		windBulletFirer.carrying = true
-		windBulletFirer.carryTarget = get_node(".")
-	elif thrown == true:
-		velocity = Vector2(THROWSPEED * direction, 0)
-	elif kicked == true:
-		velocity = Vector2(0, THROWSPEED)
-	elif animation.current_animation == "Look":
-		DAMAGING = true
-		velocity.x = 0
-	else:
-		DAMAGING = true
-		velocity.x = SPEED * direction
+	# Handle movement as a normal enemy.
+	if not inflated and not thrown and not kicked:
+		if animation.current_animation == "Look":
+			DAMAGING = true
+			velocity.x = 0
+		else:
+			DAMAGING = true
+			velocity.x = SPEED * direction
 	
 	# Standard animation.
 	if inflated == true or thrown == true or kicked == true:
@@ -64,13 +49,6 @@ func _physics_process(delta):
 			justTurned = true
 		elif rayCast.is_colliding() == false and is_on_floor() and justTurned == false:
 			animation.play("Look")
-	
-	# Wind Bullet hit detection
-	# I would've done this in Enemy but for some reason _physics_process
-	# doesn't wanna work in the enemy script, only in this script!!! Yayy
-	if windBulletHit == true && GRABBABLE == true and thrown == false:
-		inflated = true
-		windBulletHit = false
 	
 	# Moving depending on if the enemy has been thrown or not.
 	if thrown == true or kicked == true:

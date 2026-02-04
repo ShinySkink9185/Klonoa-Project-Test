@@ -17,13 +17,8 @@ func _ready():
 	popScene = load("res://Scenes/Effects/pop_(sonic_1_gg).tscn")
 
 func _physics_process(delta):
-	
-	# Spawn an explosion and nullify the enemy if defeated.
-	if defeated == true:
-		var pop = popScene.instantiate()
-		owner.add_child(pop)
-		pop.global_position = Vector2(global_position.x, global_position.y - 22)
-		queue_free()
+	# Run the subclass's _physics_process
+	super._physics_process(delta)
 	
 	# Add gravity.
 	if not is_on_floor():

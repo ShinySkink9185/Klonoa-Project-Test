@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnkp1y4ur6vwa"]
+[gd_scene format=3 uid="uid://dnkp1y4ur6vwa"]
 
 [ext_resource type="Script" uid="uid://cknjrlw7jolox" path="res://Scripts/Enemies/Crabmeat/crabmeat.gd" id="1_q4cqa"]
 [ext_resource type="Texture2D" uid="uid://dy4sej0acta6l" path="res://Assets/Images/Enemies/Crabmeat/Crabmeat.png" id="2_38w7e"]
@@ -78,7 +78,7 @@ size = Vector2(2, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ec42x"]
 
-[node name="Crabmeat" type="CharacterBody2D"]
+[node name="Crabmeat" type="CharacterBody2D" unique_id=1533432335]
 collision_layer = 2
 script = ExtResource("1_q4cqa")
 SPEED = 7.5
@@ -86,37 +86,35 @@ GRABBABLE = false
 RESPAWN = false
 metadata/_custom_type_script = "uid://bf17arjbhumlf"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=806265410]
 position = Vector2(0, -12)
 texture = ExtResource("2_38w7e")
 hframes = 4
 region_enabled = true
 region_rect = Rect2(0, 0, 96, 24)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=361250296]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_uufeo")
-}
-autoplay = "Walk"
+libraries/ = SubResource("AnimationLibrary_uufeo")
+autoplay = &"Walk"
 
-[node name="CollisionBox" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1475269893]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_38w7e")
 
-[node name="Hitbox" type="Area2D" parent="." groups=["damageHitbox"]]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1110463301 groups=["damageHitbox"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=137212439]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_ec42x")
 
-[node name="BulletSpawn1" type="Marker2D" parent="."]
+[node name="BulletSpawn1" type="Marker2D" parent="." unique_id=1132565221]
 position = Vector2(-8, -26)
 
-[node name="BulletSpawn2" type="Marker2D" parent="."]
+[node name="BulletSpawn2" type="Marker2D" parent="." unique_id=593540456]
 position = Vector2(8, -26)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1283512716]
 position = Vector2(0, -10)
 rect = Rect2(-12, -14, 24, 24)
 

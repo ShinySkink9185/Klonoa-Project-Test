@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chxhpq7qu4jrm"]
+[gd_scene format=3 uid="uid://chxhpq7qu4jrm"]
 
 [ext_resource type="Script" uid="uid://dyjvp2jeqdgv8" path="res://Scripts/Enemies/Moo/moo.gd" id="1_ga75c"]
 [ext_resource type="Texture2D" uid="uid://bjrfbnxt3aevx" path="res://Assets/Images/Enemies/Moo/Moo.png" id="1_jvekt"]
@@ -89,44 +89,42 @@ size = Vector2(26, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5aml2"]
 size = Vector2(2, 20)
 
-[node name="Moo" type="CharacterBody2D"]
+[node name="Moo" type="CharacterBody2D" unique_id=480804205]
 collision_layer = 2
 script = ExtResource("1_ga75c")
 SPEED = 30.0
 THROWSPEED = 180.0
 metadata/_custom_type_script = "uid://bf17arjbhumlf"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=480427163]
 position = Vector2(0, -16)
 texture = ExtResource("1_jvekt")
 hframes = 8
 vframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1906920633]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_a351f")
-}
-autoplay = "Walk"
+libraries/ = SubResource("AnimationLibrary_a351f")
+autoplay = &"Walk"
 
-[node name="CollisionBox" type="CollisionShape2D" parent="." groups=["playerCollisionBox"]]
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1561305241 groups=["playerCollisionBox"]]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_10ytl")
 
-[node name="Hitbox" type="Area2D" parent="." groups=["damageHitbox"]]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1428098842 groups=["damageHitbox"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1683069847]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_5aml2")
 
-[node name="GroundRayCast" type="RayCast2D" parent="."]
+[node name="GroundRayCast" type="RayCast2D" parent="." unique_id=187023233]
 position = Vector2(3, -10)
 target_position = Vector2(0, 20)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1575045756]
 position = Vector2(0, -10)
 rect = Rect2(-13, -11, 26, 21)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=992243268]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
