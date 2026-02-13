@@ -11,7 +11,7 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	
 	# Add gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not inflated and not thrown and not kicked:
 		velocity += get_gravity() * delta
 	
 	# Handle direction facing.
@@ -70,3 +70,13 @@ func _on_animation_player_animation_finished(anim_name):
 		direction = -direction
 		animation.play("Walk")
 		justTurned = true
+
+# Destroy it if a projectile hits it!
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("projectileHitbox"):
+		defeated = true
+		area.get_parent().defeated = true
+
+# Enable processing only once the enemy is on screen.
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	process_mode = Node.PROCESS_MODE_INHERIT # This is Inherit mode.

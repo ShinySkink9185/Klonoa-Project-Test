@@ -90,6 +90,7 @@ size = Vector2(26, 20)
 size = Vector2(2, 20)
 
 [node name="Moo" type="CharacterBody2D" unique_id=480804205]
+process_mode = 4
 collision_layer = 2
 script = ExtResource("1_ga75c")
 SPEED = 30.0
@@ -121,10 +122,10 @@ shape = SubResource("RectangleShape2D_5aml2")
 position = Vector2(3, -10)
 target_position = Vector2(0, 20)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1575045756]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=992243268]
 position = Vector2(0, -10)
 rect = Rect2(-13, -11, 26, 21)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=992243268]
-
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

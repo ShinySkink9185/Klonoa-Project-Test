@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://jwaw0q1o8xe4"]
+[gd_scene format=3 uid="uid://jwaw0q1o8xe4"]
 
 [ext_resource type="Script" uid="uid://dcn17e72pj7mw" path="res://Scripts/Menus/title_screen.gd" id="1_kslbh"]
 [ext_resource type="Texture2D" uid="uid://cdxjb5neoy1p0" path="res://Assets/Images/HUD/Title Screen/Logos.png" id="1_ypyi8"]
@@ -422,10 +422,10 @@ tracks/29/path = NodePath("Sounds/Namco:playing")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [false]
 }
 tracks/30/type = "value"
 tracks/30/imported = false
@@ -931,13 +931,13 @@ _data = {
 &"Title Process": SubResource("Animation_ypyi8")
 }
 
-[node name="Logos" type="Node2D"]
+[node name="Logos" type="Node2D" unique_id=1032298489]
 script = ExtResource("1_kslbh")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1886169494]
 follow_viewport_enabled = true
 
-[node name="Black Background" type="TextureRect" parent="HUD"]
+[node name="Black Background" type="TextureRect" parent="HUD" unique_id=326821743]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -948,7 +948,7 @@ size_flags_vertical = 3
 texture = SubResource("AtlasTexture_ypyi8")
 stretch_mode = 1
 
-[node name="White Background" type="TextureRect" parent="HUD"]
+[node name="White Background" type="TextureRect" parent="HUD" unique_id=935775537]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -960,9 +960,9 @@ size_flags_vertical = 3
 texture = SubResource("AtlasTexture_tkqem")
 stretch_mode = 1
 
-[node name="S Logo" type="Node" parent="HUD"]
+[node name="S Logo" type="Node" parent="HUD" unique_id=252014249]
 
-[node name="Complete" type="TextureRect" parent="HUD/S Logo"]
+[node name="Complete" type="TextureRect" parent="HUD/S Logo" unique_id=1323787656]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -977,7 +977,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_phrqn")
 
-[node name="Part 1" type="TextureRect" parent="HUD/S Logo"]
+[node name="Part 1" type="TextureRect" parent="HUD/S Logo" unique_id=1537684711]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -991,7 +991,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_73urc")
 
-[node name="Slash 1" type="TextureRect" parent="HUD/S Logo"]
+[node name="Slash 1" type="TextureRect" parent="HUD/S Logo" unique_id=1796626189]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -1001,7 +1001,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_g65d6")
 stretch_mode = 2
 
-[node name="Part 2" type="TextureRect" parent="HUD/S Logo"]
+[node name="Part 2" type="TextureRect" parent="HUD/S Logo" unique_id=460129209]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1015,7 +1015,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_rtxdq")
 metadata/_edit_use_anchors_ = true
 
-[node name="Slash 2" type="TextureRect" parent="HUD/S Logo"]
+[node name="Slash 2" type="TextureRect" parent="HUD/S Logo" unique_id=2126815503]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -1028,7 +1028,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_g65d6")
 stretch_mode = 2
 
-[node name="Part 3" type="TextureRect" parent="HUD/S Logo"]
+[node name="Part 3" type="TextureRect" parent="HUD/S Logo" unique_id=727824426]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1043,7 +1043,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_lkqe8")
 metadata/_edit_use_anchors_ = true
 
-[node name="Slash 3" type="TextureRect" parent="HUD/S Logo"]
+[node name="Slash 3" type="TextureRect" parent="HUD/S Logo" unique_id=397896894]
 anchors_preset = -1
 anchor_left = 0.79700005
 anchor_top = -0.037
@@ -1054,7 +1054,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_57vyr")
 stretch_mode = 2
 
-[node name="Part 4" type="TextureRect" parent="HUD/S Logo"]
+[node name="Part 4" type="TextureRect" parent="HUD/S Logo" unique_id=613714729]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1069,7 +1069,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_g8yqd")
 metadata/_edit_use_anchors_ = true
 
-[node name="Slash 4" type="TextureRect" parent="HUD/S Logo"]
+[node name="Slash 4" type="TextureRect" parent="HUD/S Logo" unique_id=2060663319]
 anchors_preset = -1
 anchor_left = 0.20300001
 anchor_top = 1.0370001
@@ -1080,7 +1080,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_57vyr")
 stretch_mode = 2
 
-[node name="Part 5" type="TextureRect" parent="HUD/S Logo"]
+[node name="Part 5" type="TextureRect" parent="HUD/S Logo" unique_id=1358554393]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1095,7 +1095,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_jvqb8")
 metadata/_edit_use_anchors_ = true
 
-[node name="Slash 5" type="TextureRect" parent="HUD/S Logo"]
+[node name="Slash 5" type="TextureRect" parent="HUD/S Logo" unique_id=1945850556]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
@@ -1109,7 +1109,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_g65d6")
 stretch_mode = 2
 
-[node name="Part 6" type="TextureRect" parent="HUD/S Logo"]
+[node name="Part 6" type="TextureRect" parent="HUD/S Logo" unique_id=154433733]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1124,7 +1124,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_txmn4")
 metadata/_edit_use_anchors_ = true
 
-[node name="Slash 6" type="TextureRect" parent="HUD/S Logo"]
+[node name="Slash 6" type="TextureRect" parent="HUD/S Logo" unique_id=749814146]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -1136,9 +1136,9 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_g65d6")
 stretch_mode = 2
 
-[node name="Namco Screen" type="Node" parent="HUD"]
+[node name="Namco Screen" type="Node" parent="HUD" unique_id=797974623]
 
-[node name="Namco Logo" type="TextureRect" parent="HUD/Namco Screen"]
+[node name="Namco Logo" type="TextureRect" parent="HUD/Namco Screen" unique_id=1652979485]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1154,7 +1154,7 @@ texture = SubResource("AtlasTexture_kslbh")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Disclaimer 1" type="TextureRect" parent="HUD/Namco Screen"]
+[node name="Disclaimer 1" type="TextureRect" parent="HUD/Namco Screen" unique_id=1951837359]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1170,7 +1170,7 @@ texture = SubResource("AtlasTexture_sayln")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Disclaimer 2" type="TextureRect" parent="HUD/Namco Screen"]
+[node name="Disclaimer 2" type="TextureRect" parent="HUD/Namco Screen" unique_id=1717865289]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1186,7 +1186,7 @@ texture = SubResource("AtlasTexture_mkbck")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Klonoa Works Logo" type="TextureRect" parent="HUD"]
+[node name="Klonoa Works Logo" type="TextureRect" parent="HUD" unique_id=442411801]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -1203,7 +1203,7 @@ texture = SubResource("AtlasTexture_03obe")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Black Fadeout" type="TextureRect" parent="HUD"]
+[node name="Black Fadeout" type="TextureRect" parent="HUD" unique_id=1061940145]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1214,7 +1214,7 @@ size_flags_vertical = 3
 texture = SubResource("AtlasTexture_ypyi8")
 stretch_mode = 1
 
-[node name="TextureButton" type="TextureButton" parent="HUD"]
+[node name="TextureButton" type="TextureButton" parent="HUD" unique_id=1638851809]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1227,18 +1227,16 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tkqem")
-}
-autoplay = "Title Process"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=955509398]
+libraries/ = SubResource("AnimationLibrary_tkqem")
+autoplay = &"Title Process"
 
-[node name="Sounds" type="Node" parent="."]
+[node name="Sounds" type="Node" parent="." unique_id=891958171]
 
-[node name="Namco" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Namco" type="AudioStreamPlayer" parent="Sounds" unique_id=1394880608]
 stream = ExtResource("3_k4ybl")
 
-[node name="Wahoo" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Wahoo" type="AudioStreamPlayer" parent="Sounds" unique_id=402999483]
 stream = ExtResource("4_in0c8")
 volume_db = 13.0
 

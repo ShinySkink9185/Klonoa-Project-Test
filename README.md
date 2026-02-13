@@ -17,6 +17,8 @@ Made by Bandai Namco
 
 Klonoa Heroes: Densetsu no Star Medal (GBA)
 Ripped by MidnaGamer
+Extraction Tool (Klonoa Heroes Patcher) by RayCarrot
+English Translation by The KMC Translation Group
 Made by Bandai Namco, Klonoa Works
 
 Sonic the Hedgehog (Game Gear)
@@ -54,7 +56,6 @@ Darko/Mlgjohn
 Dark the Hedgehog
 DaStupidSonic
 Diligentchi
-ElectricWaveX
 Evil Dark the Hedgehog
 Flame the Synth-Landit
 FleetLovesPizza
@@ -85,7 +86,7 @@ Kori
 Kilo
 KixxReborn
 KiyanTheBluePenguin
-Marie-tsuru/Kriby
+MarieLilypad !!
 Marilyn
 MarleDrawsStuff
 MasochMoon
@@ -115,6 +116,7 @@ RubyTheMii
 SandwichCinema
 SaturnDreemurr32X
 SEGA
+SethTheEchidna
 SeventhSentinel
 Skoopy
 Sling1991
@@ -136,7 +138,6 @@ Survival46
 SweetCoffy
 Tech
 The SRB2 Community
-Troplucky
 Virmonth
 Weegs
 TheWhatParting

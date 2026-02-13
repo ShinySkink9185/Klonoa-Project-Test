@@ -64,8 +64,12 @@ func _on_animation_player_animation_finished(anim_name):
 		walkingTimer = 400.0/60.0
 		direction = -direction
 		
-# Destroy it!
+# Destroy it if a projectile hits it!
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("projectileHitbox"):
 		defeated = true
 		area.get_parent().defeated = true
+
+# Enable processing only once the enemy is on screen.
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	process_mode = Node.PROCESS_MODE_INHERIT # This is Inherit mode.

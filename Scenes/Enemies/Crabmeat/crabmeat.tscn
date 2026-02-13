@@ -79,6 +79,7 @@ size = Vector2(2, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ec42x"]
 
 [node name="Crabmeat" type="CharacterBody2D" unique_id=1533432335]
+process_mode = 4
 collision_layer = 2
 script = ExtResource("1_q4cqa")
 SPEED = 7.5
@@ -114,9 +115,10 @@ position = Vector2(-8, -26)
 [node name="BulletSpawn2" type="Marker2D" parent="." unique_id=593540456]
 position = Vector2(8, -26)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1283512716]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1398406879]
 position = Vector2(0, -10)
 rect = Rect2(-12, -14, 24, 24)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

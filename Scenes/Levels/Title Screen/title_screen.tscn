@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ct3dqquwv4x0w"]
+
+[ext_resource type="Texture2D" uid="uid://cdxjb5neoy1p0" path="res://Assets/Images/HUD/Title Screen/Logos.png" id="1_ypyi8"]
+[ext_resource type="FontFile" uid="uid://cr8n20njor36l" path="res://Assets/Images/HUD/HeroesFont.png" id="2_kslbh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kslbh"]
+atlas = ExtResource("1_ypyi8")
+region = Rect2(0, 0, 1, 1)
+
+[node name="Title Screen" type="Node2D" unique_id=1366218190]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1066240343]
+
+[node name="Black Background" type="TextureRect" parent="CanvasLayer" unique_id=1676071014]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_kslbh")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=583661958]
+offset_left = -7.0
+offset_top = 8.0
+offset_right = 33.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("2_kslbh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1996369576]
