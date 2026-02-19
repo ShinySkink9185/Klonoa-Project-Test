@@ -26,10 +26,55 @@ script = ExtResource("3_2grbd")
 palette = ExtResource("3_ba4jb")
 metadata/_custom_type_script = "uid://vrs1twpulcy0"
 
+[sub_resource type="Animation" id="Animation_ba4jb"]
+resource_name = "Idle"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_sl5wb"]
+resource_name = "Initial"
+length = 0.50000167
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.50000167),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Transform2D(1, 0, 0, 1, 0, 64), Transform2D(1, 0, 0, 1, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_32sr8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Transform2D(1, 0, 0, 1, 0, 64)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_32sr8"]
+_data = {
+&"Idle": SubResource("Animation_ba4jb"),
+&"Initial": SubResource("Animation_sl5wb"),
+&"RESET": SubResource("Animation_32sr8")
+}
+
 [node name="Dialogue" type="Node2D" unique_id=1619324082]
 script = ExtResource("1_oifed")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=696934857]
+offset = Vector2(0, 64)
+transform = Transform2D(1, 0, 0, 1, 0, 64)
 
 [node name="Middle Box" type="TextureRect" parent="CanvasLayer" unique_id=1612967802]
 anchors_preset = -1
@@ -76,3 +121,9 @@ offset_bottom = -9.0
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("2_fp56s")
 autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=293291910]
+libraries/ = SubResource("AnimationLibrary_32sr8")
+autoplay = &"Initial"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
