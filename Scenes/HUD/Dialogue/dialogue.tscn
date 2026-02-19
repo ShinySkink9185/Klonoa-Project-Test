@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdgvfnxjkc4qv"]
 
 [ext_resource type="Texture2D" uid="uid://c5b1nwvpa3s0v" path="res://Assets/Images/HUD/Dialogue/DialogueBox.png" id="1_6ysx1"]
-[ext_resource type="Script" uid="uid://c6pcfvp4mflyf" path="res://Scenes/HUD/Dialogue/dialogue.gd" id="1_oifed"]
+[ext_resource type="Script" uid="uid://c6pcfvp4mflyf" path="res://Scripts/HUD/Dialogue/dialogue.gd" id="1_oifed"]
 [ext_resource type="FontFile" uid="uid://cr8n20njor36l" path="res://Assets/Images/HUD/Heroes Font/HeroesFont.png" id="2_fp56s"]
 [ext_resource type="Script" uid="uid://vrs1twpulcy0" path="res://addons/PaletteSwapShader/PaletteMaterial.gd" id="3_2grbd"]
 [ext_resource type="Texture2D" uid="uid://dr7j21r7u7yc4" path="res://Assets/Images/HUD/Heroes Font/HeroesFontPALETTEA.png" id="3_ba4jb"]
