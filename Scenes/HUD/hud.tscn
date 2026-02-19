@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7rec25qeua64"]
+[gd_scene format=3 uid="uid://c7rec25qeua64"]
 
 [ext_resource type="Texture2D" uid="uid://cvlahy80gbgr7" path="res://Assets/Images/HUD/HUD.png" id="1_33i1w"]
 [ext_resource type="PackedScene" uid="uid://j3iqe7mt0lar" path="res://Scenes/HUD/heart.tscn" id="2_5aai8"]
 [ext_resource type="FontFile" uid="uid://bo1nwwloi60sh" path="res://Assets/Images/HUD/HUDFont.png" id="3_a56j6"]
 [ext_resource type="Script" uid="uid://bky85cyhif8w2" path="res://Scripts/HUD/dream_stone_count.gd" id="4_k83ni"]
-[ext_resource type="Script" uid="uid://c87dyw5630nvt" path="res://Scenes/HUD/life_count.gd" id="5_6pkbx"]
+[ext_resource type="Script" uid="uid://c87dyw5630nvt" path="res://Scripts/HUD/life_count.gd" id="5_6pkbx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a56j6"]
 atlas = ExtResource("1_33i1w")
@@ -22,10 +22,10 @@ region = Rect2(8, 32, 40, 16)
 atlas = ExtResource("1_33i1w")
 region = Rect2(52, 32, 8, 16)
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=779127889]
 follow_viewport_enabled = true
 
-[node name="BarMiddle" type="TextureRect" parent="."]
+[node name="BarMiddle" type="TextureRect" parent="." unique_id=2120757519]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -36,7 +36,7 @@ grow_vertical = 0
 size_flags_vertical = 8
 texture = SubResource("AtlasTexture_a56j6")
 
-[node name="BarBeginning" type="TextureRect" parent="."]
+[node name="BarBeginning" type="TextureRect" parent="." unique_id=1055930466]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -45,7 +45,7 @@ offset_right = 160.0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_33i1w")
 
-[node name="BarEnd" type="TextureRect" parent="."]
+[node name="BarEnd" type="TextureRect" parent="." unique_id=1221586105]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -57,7 +57,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_5aai8")
 
-[node name="DreamStoneIcon" type="TextureRect" parent="."]
+[node name="DreamStoneIcon" type="TextureRect" parent="." unique_id=1214797758]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -70,7 +70,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_k83ni")
 
-[node name="HeartAnchor" type="Control" parent="."]
+[node name="HeartAnchor" type="Control" parent="." unique_id=1438263783]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -79,18 +79,18 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="Heart" parent="HeartAnchor" instance=ExtResource("2_5aai8")]
+[node name="Heart" parent="HeartAnchor" unique_id=836907769 instance=ExtResource("2_5aai8")]
 position = Vector2(16, 32)
 
-[node name="Heart2" parent="HeartAnchor" instance=ExtResource("2_5aai8")]
+[node name="Heart2" parent="HeartAnchor" unique_id=1021908668 instance=ExtResource("2_5aai8")]
 position = Vector2(32, 32)
 hudHealthID = 1
 
-[node name="Heart3" parent="HeartAnchor" instance=ExtResource("2_5aai8")]
+[node name="Heart3" parent="HeartAnchor" unique_id=1125469342 instance=ExtResource("2_5aai8")]
 position = Vector2(48, 32)
 hudHealthID = 2
 
-[node name="DreamStoneCount" type="Label" parent="."]
+[node name="DreamStoneCount" type="Label" parent="." unique_id=1658994087]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -107,7 +107,7 @@ horizontal_alignment = 2
 tab_stops = PackedFloat32Array(0)
 script = ExtResource("4_k83ni")
 
-[node name="LifeCount" type="Label" parent="."]
+[node name="LifeCount" type="Label" parent="." unique_id=1053644160]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
