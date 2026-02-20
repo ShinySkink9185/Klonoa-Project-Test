@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cr8n20njor36l" path="res://Assets/Images/HUD/Heroes Font/HeroesFont.png" id="2_fp56s"]
 [ext_resource type="Script" uid="uid://vrs1twpulcy0" path="res://addons/PaletteSwapShader/PaletteMaterial.gd" id="3_2grbd"]
 [ext_resource type="Texture2D" uid="uid://dr7j21r7u7yc4" path="res://Assets/Images/HUD/Heroes Font/HeroesFontPALETTEA.png" id="3_ba4jb"]
+[ext_resource type="Texture2D" uid="uid://cj3j7gkhqg7id" path="res://Assets/Images/HUD/Dialogue/DialogueSpeakers.png" id="6_sl5wb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ysx1"]
 atlas = ExtResource("1_6ysx1")
@@ -25,6 +26,18 @@ shader_parameter/output = PackedVector3Array(0, 0, 0, 0.77254903, 0.7058824, 0.3
 script = ExtResource("3_2grbd")
 palette = ExtResource("3_ba4jb")
 metadata/_custom_type_script = "uid://vrs1twpulcy0"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32sr8"]
+atlas = ExtResource("6_sl5wb")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqa1t"]
+atlas = ExtResource("6_sl5wb")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qqnv"]
+atlas = ExtResource("6_sl5wb")
+region = Rect2(0, 0, 32, 16)
 
 [sub_resource type="Animation" id="Animation_ba4jb"]
 resource_name = "Idle"
@@ -121,6 +134,27 @@ offset_bottom = -9.0
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("2_fp56s")
 autowrap_mode = 3
+
+[node name="Speaker1" type="TextureRect" parent="CanvasLayer" unique_id=681946338]
+offset_left = 8.0
+offset_top = 160.0
+offset_right = 40.0
+offset_bottom = 174.0
+texture = SubResource("AtlasTexture_32sr8")
+
+[node name="Speaker2" type="TextureRect" parent="CanvasLayer" unique_id=121916456]
+offset_left = 8.0
+offset_top = 176.0
+offset_right = 40.0
+offset_bottom = 192.0
+texture = SubResource("AtlasTexture_lqa1t")
+
+[node name="Speaker3" type="TextureRect" parent="CanvasLayer" unique_id=1954759308]
+offset_left = 8.0
+offset_top = 192.0
+offset_right = 40.0
+offset_bottom = 208.0
+texture = SubResource("AtlasTexture_1qqnv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=293291910]
 libraries/ = SubResource("AnimationLibrary_32sr8")

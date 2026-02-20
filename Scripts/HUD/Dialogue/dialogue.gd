@@ -11,8 +11,10 @@ var confirmOption = false
 var dialogueList := []
 var justStarted = true
 
-# testing function
 func _init():
+	# Define all of our speakers for text
+	defineSpeaker("Klonoa", "res://Assets/Images/HUD/Dialogue/DialogueBox.png", Vector2(0, 0))
+	# testing dialogue, remove later
 	defineDialogue("Testing 1!")
 	defineDialogue("Testing 2!")
 
@@ -52,7 +54,8 @@ func _physics_process(delta):
 				textLabel.text = ""
 
 # Defines a new Speaker
-func defineSpeaker(speaker: String, sound: String, image: String, coords: Vector2 = Vector2(0, 0)):
+# TODO: find Sonic Battle dialogue sound and replace the sound with that
+func defineSpeaker(speaker: String, image: String = "res://Assets/Images/HUD/Dialogue/DialogueBox.png", coords: Vector2 = Vector2(0, 0), sound: String = "res://Assets/Sounds/Klonoa/Jump.wav"):
 	pass
 
 # Adds a dialogueEntry class that stores all the info of a single piece of dialogue
